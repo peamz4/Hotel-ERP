@@ -1,7 +1,14 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+// Route
 const adminRoutes = require('./routes/adminRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
+const customerRoutes = require('./routes/customerRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+const roomRoutes = require('./routes/roomRoutes');
+const roomTypeRoutes = require('./routes/roomTypeRoutes');
+
 const cors = require('cors');
 
 const app = express();
@@ -13,8 +20,13 @@ connectDB();
 app.use(express.json());
 app.use(cors());
 
-// Admin routes
+// routes
 app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/bookings', bookingRoutes);
+app.use('/api/v1/customers', customerRoutes);
+app.use('/api/v1/payments', paymentRoutes);
+app.use('/api/v1/rooms', roomRoutes);
+app.use('/api/v1/roomtypes', roomTypeRoutes);
 
 
 const PORT = process.env.PORT || 3001;

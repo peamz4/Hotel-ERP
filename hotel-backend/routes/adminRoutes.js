@@ -16,12 +16,12 @@ router.post('/create', createAdmin);
 router.get('/getall', getAllAdmins);
 
 // Get admin by ID
-router.get('/:id', getAdminById);
+router.get('/get/:id', getAdminById);
 
 // Update admin
-router.put('/:id', updateAdmin);
+router.put('/update/:id', updateAdmin);
 
 // Delete admin
-router.delete('/:id', deleteAdmin);
+router.delete('/delete/:id', deleteAdmin);
 
 module.exports = router;
