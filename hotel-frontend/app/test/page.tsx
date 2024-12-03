@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar/page";
+import Navbar from "@/components/navbar/navber";
 
 const Page: React.FC = () => {
   return (
