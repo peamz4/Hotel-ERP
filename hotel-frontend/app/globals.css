@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css?family=Inclusive+Sans:400|Albert+Sans:700");
+
+@font-face {
+  font-family: "LINE Seed Sans TH-Regular";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/64e6ee2e25081e8f2cfc6c90/fonts/lineseedsansth_rg.otf") format("opentype");
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,5 +30,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:"LINE Seed Sans TH-Regular";
 }
