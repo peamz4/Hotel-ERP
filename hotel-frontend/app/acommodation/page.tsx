@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default function ACOMMODATION() {
   return (
     <div className="w-full h-full flex-col flex justify-center items-center">
       <h1 className="text-[120px]">Hi this is acomoehnsoipgn</h1>
