@@ -1,21 +1,28 @@
-"use client"
-import { useState } from 'react';
-import AdminSidebar from '@/components/admin/sidebar';
-import Overview from '@/components/admin/overview';
-import RoomDashboard from '@/components/admin/roomdashboard';
-import Booking from '@/components/admin/roombooking';
+"use client";
+import { useState } from "react";
+import AdminSidebar from "@/components/admin/sidebar";
+import Overview from "@/components/admin/overview";
+import RoomDashboard from "@/components/admin/roomdashboard";
+import Booking from "@/components/admin/roombooking";
+import InvoicingReceipts from "@/components/admin/InvoicingReceipt";
+import PromotionsDiscounts from "@/components/admin/PromotionsDiscounts";
+
 
 export default function HotelReportPage() {
-  const [activeComponent, setActiveComponent] = useState('overview');
+  const [activeComponent, setActiveComponent] = useState("overview");
 
   const renderContent = () => {
     switch (activeComponent) {
-      case 'overview':
+      case "overview":
         return <Overview />;
-      case 'roomDashboard':
+      case "roomDashboard":
         return <RoomDashboard />;
-      case 'Booking':
+      case "Booking":
         return <Booking />;
+      case "invoicingReceipts":
+        return <InvoicingReceipts />;
+      case "promotionsDiscounts":
+        return <PromotionsDiscounts />;
       default:
         return <Overview />;
     }

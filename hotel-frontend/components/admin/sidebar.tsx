@@ -6,7 +6,7 @@ const AdminSidebar = ({
   setActiveComponent: (component: string) => void;
 }) => {
   return (
-    <aside className="w-64 bg-[#5C5C5C] text-white h-screen p-6">
+    <aside className="w-64 bg-[#5C5C5C] text-white h-screen p-6 sticky top-0">
       {/* Logo */}
       <div className="mb-8">
         <Image

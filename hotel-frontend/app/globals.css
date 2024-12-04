@@ -32,3 +32,5 @@ body {
   background: var(--background);
   font-family:"LINE Seed Sans TH-Regular";
 }
+
+@layer base { img {display: initial;}}
