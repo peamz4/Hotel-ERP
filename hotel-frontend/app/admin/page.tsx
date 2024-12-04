@@ -3,6 +3,7 @@ import { useState } from 'react';
 import AdminSidebar from '@/components/admin/sidebar';
 import Overview from '@/components/admin/overview';
 import RoomDashboard from '@/components/admin/roomdashboard';
+import Booking from '@/components/admin/roombooking';
 
 export default function HotelReportPage() {
   const [activeComponent, setActiveComponent] = useState('overview');
@@ -13,6 +14,8 @@ export default function HotelReportPage() {
         return <Overview />;
       case 'roomDashboard':
         return <RoomDashboard />;
+      case 'Booking':
+        return <Booking />;
       default:
         return <Overview />;
     }
