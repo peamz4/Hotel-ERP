@@ -1,11 +1,13 @@
 import Navbar from "@/components/navbar/navber";
 import Footer from "@/components/footer/footer";
 import HotelOffer from "@/components/offerpopup/offerpopup";
-
+import Header from "@/components/header";
 const Page: React.FC = () => {
     return (
         <div>
-            <Navbar />
+            <div className="fixed z-50">
+                <Header />
+            </div>
             <div className="flex flex-col items-center relative bg-white w-full">
                 <div className="flex flex-col items-center justify-center gap-2.5 px-5 sm:px-10 md:px-[120px] py-0 relative w-full bg-white">
 

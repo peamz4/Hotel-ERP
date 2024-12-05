@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={`w-screen p-4 pl-12 pr-12 flex flex-row justify-between bg-[#5C5C5C] transition-all duration-300 ${
-      isScrolled ? "sticky top-0 bg-opacity-100 z-50 h-[60px]" : "relative h-[120px] bg-opacity-60"
+      isScrolled ? "sticky top-0 bg-opacity-100 z-50 h-[60px]" : "relative h-[120px] bg-opacity-80"
       }`}
     >
       <Image src="/logo/logo.png" alt="Logo" width={isScrolled ? 70 : 170} height={isScrolled ? 100 : 140} />
