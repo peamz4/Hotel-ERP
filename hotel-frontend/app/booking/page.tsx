@@ -18,7 +18,7 @@ const Page: React.FC = () => {
                             src="/bookingimg.png"
                             alt="Booking image"/>
                     </div>
-                    <div className="flex flex-col mr-10">
+                    <div className="flex flex-col md:mx-10">
                         <h3>
                             Deluxe Room
                         </h3>
@@ -37,7 +37,7 @@ const Page: React.FC = () => {
                         </div>
                     </div>
                     <div className="flex flex-col">
-                        <div className="flex flex-col md:w-[400px] shadow-lg rounded">
+                        <div className="flex flex-col md:w-[400px] shadow-lg rounded md:ml-10">
                             <h3 className="w-full bg-[#5C5C5C] text-white py-2 pl-2">Selection Details</h3>
                             <p className="text-[#b4a258]">CHECK - IN:</p>
                             <p>Fri 29 Nov 2024</p>
@@ -71,18 +71,18 @@ const Page: React.FC = () => {
                                 <p>THB 12,287.88</p>
                             </div>
                         </div>
-                        <div className="my-10 flex flex-row justify-between">
+                        <div className="my-10 flex flex-row justify-between md:ml-10">
                             <p className="text-[#b4a258]">TOTAL PRICE</p>
                             <p>THB 12,287.88</p>
                         </div>
                     </div>
                 </div>
-                <div className="mb-10">
-                    <div className="w-full bg-[#5C5C5C] text-white py-2 pl-10">
+                <div className="mb-10 shadow-xl rounded">
+                    <div className="w-full bg-[#5C5C5C] text-white py-2 md:pl-10 pl-2">
                         <h3>Guest Details</h3>
                     </div>
                         <p className="flex justify-end md:pr-10 pr-2">*Required fields</p>
-                    <div className="md:flex">
+                    <div className="md:flex md:pl-10 px-2">
                         <div className="md:mr-5">
                             <label>*First Name :</label><br />
                             <input type="text" className="border-2 py-2 md:w-full w-full" />
@@ -92,7 +92,7 @@ const Page: React.FC = () => {
                             <input type="text" className="border-2 py-2 md:w-full w-full" />
                         </div>
                     </div>
-                    <div className="md:flex">
+                    <div className="md:flex md:pl-10 px-2">
                         <div className="md:mr-5">
                             <label>*Email :</label><br />
                             <input type="email" className="border-2 py-2 md:w-full w-full" />
@@ -102,10 +102,10 @@ const Page: React.FC = () => {
                             <input type="email" className="border-2 py-2 md:w-full w-full" />
                         </div>
                     </div>
-                    <div className="md:flex">
+                    <div className="md:flex md:pl-10 px-2 pb-10">
                         <div>
                             <label>*Mobile Phone :</label><br />
-                            <input type="text" className="border-2 py-2 md:w-[300px] w-full" />
+                            <input type="text" className="border-2 py-2 md:w-full w-full" />
                         </div>
                     </div>
                 </div>

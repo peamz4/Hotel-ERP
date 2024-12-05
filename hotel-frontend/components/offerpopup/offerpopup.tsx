@@ -45,7 +45,7 @@ const HotelOffer = () => {
 
             {/* Pop-up Modal */}
             {isPopupVisible && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex max-md:items-center max-md:justify-center z-50">
                     <div className="bg-[#EBEBEB] shadow-lg w-[500px] h-[750px] relative">
                         {/* Header */}
                         <div className="bg-[#b4a258] flex justify-center items-center h-20">
@@ -92,25 +92,25 @@ const HotelOffer = () => {
                                 <div className="flex justify-between items-center mb-2">
                                     <p>Adults</p>
                                     <div className="flex items-center">
-                                        <button className="px-2 py-1 border rounded">+</button>
+                                        <button className="border-2 border-black rounded-full h-6 w-6">+</button>
                                         <p className="mx-2">1</p>
-                                        <button className="px-2 py-1 border rounded">-</button>
+                                        <button className="border-2 border-black rounded-full h-6 w-6">-</button>
                                     </div>
                                 </div>
                                 <div className="flex justify-between items-center mb-2">
                                     <p>Children (4–11 yrs)</p>
                                     <div className="flex items-center">
-                                        <button className="px-2 py-1 border rounded">+</button>
+                                        <button className="border-2 border-black rounded-full h-6 w-6">+</button>
                                         <p className="mx-2">1</p>
-                                        <button className="px-2 py-1 border rounded">-</button>
+                                        <button className="border-2 border-black rounded-full h-6 w-6">-</button>
                                     </div>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <p>Infant (0–3 yrs)</p>
                                     <div className="flex items-center">
-                                        <button className="px-2 py-1 border rounded">+</button>
+                                        <button className="border-2 border-black rounded-full h-6 w-6">+</button>
                                         <p className="mx-2">1</p>
-                                        <button className="px-2 py-1 border rounded">-</button>
+                                        <button className="border-2 border-black rounded-full h-6 w-6">-</button>
                                     </div>
                                 </div>
                             </div>
