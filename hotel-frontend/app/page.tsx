@@ -1,16 +1,16 @@
-import Image from "next/image";
+"use client"; // Add this line to mark the file as a client component
 
+import { useRouter } from "next/navigation"; // Use next/navigation for client-side routing
+import { useEffect } from "react";
 
-export default function Home() {
-  return (
-    <div className="w-full h-full">
-      <h1>Hotel</h1>
-      <Image
-        src="/hotel.jpg"
-        alt="Picture of the hotel"
-        width={500}
-        height={500}
-      />
-    </div>
-  );
-}
+const Page = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/home");
+  }, [router]);
+
+  return null;
+};
+
+export default Page;
