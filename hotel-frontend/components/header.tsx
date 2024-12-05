@@ -1,6 +1,4 @@
-import Link from "next/link";
 import Navbar from "@/components/navbar/navber";
-import Image from "next/image";
 import MobileNavigationBar from "@/components/navbar/mobilenavbar";
 
 const Header = () => {

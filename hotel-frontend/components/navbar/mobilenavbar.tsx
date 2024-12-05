@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,29 +14,49 @@ const links = [
 
 const MobileNavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="relative">
-      <nav className="w-screen h-[140px] bg-[#5C5C5C] p-4 flex flex-row justify-center">
+    <div className=" fixed ">
+      <nav
+        className={`w-screen h-[140px] p-4 flex flex-row justify-center transition-all duration-300 ease-in-out ${
+          isScrolled ? "bg-[#333333]" : "bg-[#5C5C5C]"
+        }`}
+        style={{ height: isOpen ? "140px" : "70px" }}
+      >
         <Image
           src="/logo/logo.png"
           className=""
           alt="Logo"
-          width={200}
-          height={120}
+          width={isOpen ? 200 : 100}
+          height={isOpen ? 120 : 60}
         />
-        <div>
-        <button
-        className="text-primary p-4 text-2xl font-bold absolute right-1 top-1" 
-        onClick={toggleMenu}
-      >
-        ☰
-      </button>
+
+        <div
+          className="text-primary p-4 text-2xl font-bold absolute right-1 top-1"
+          onClick={toggleMenu}
+        >
+          ☰
         </div>
       </nav>
 

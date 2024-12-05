@@ -1,67 +1,47 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the page is scrolled down by any amount
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-[#5C5C5C] px-4 md:px-12 h-14 flex items-center justify-between">
-      {/* Logo */}
-      <Image src="/logo/logo.png" alt="Logo" width={70} height={40} />
-
-      {/* Hamburger Button */}
-      <button
-        onClick={toggleMenu}
-        className="text-white md:hidden focus:outline-none"
-        aria-label="Toggle Menu"
-      >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4 6h16M4 12h16m-7 6h7"
-          />
-        </svg>
-      </button>
-
-      {/* Navbar Links */}
-      <div
-        className={`navbar-menu ${
-          isMenuOpen ? "block" : "hidden"
-        } md:flex flex-col md:flex-row gap-4 md:gap-14 text-white absolute md:static top-14 left-0 right-0 bg-[#5C5C5C] md:bg-transparent z-10`}
-      >
-        <Link href="/home">
-          <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">HOME</p>
-        </Link>
-        <Link href="/acommodation">
-          <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">ACCOMMODATION</p>
-        </Link>
-        <Link href="/offers">
-          <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">OFFERS</p>
-        </Link>
-        <Link href="/facilities">
-          <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">FACILITIES</p>
-        </Link>
-        <Link href="/gallery">
-          <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">GALLERY</p>
-        </Link>
+    <nav
+      className={`w-screen p-4 pl-12 pr-12 flex flex-row justify-between bg-[#5C5C5C] transition-all duration-300 ${
+      isScrolled ? "sticky top-0 bg-opacity-100 z-50 h-[60px]" : "relative h-[120px] bg-opacity-60"
+      }`}
+    >
+      <Image src="/logo/logo.png" alt="Logo" width={isScrolled ? 70 : 170} height={isScrolled ? 100 : 140} />
+      <div className="flex justify-center items-center gap-5 text-[18px]">
+      <a href="/home">HOME</a>
+      <a href="/acommodation">ACOMMODATION</a>
+      <a href="/offers">OFFERS</a>
+      <a href="/facilities">FACILITIES</a>
+      <a href="/gallery">GALLERY</a>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-

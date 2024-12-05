@@ -1,13 +1,25 @@
 import Navbar from "@/components/navbar/navber";
 import Footer from "@/components/footer/footer";
+import Header from "@/components/header";
 import FAQSection from "@/components/faq/faq";
 import RoomSection from "@/components/roomtype/roomtypeswitch";
+import Image from "next/image";
 
 const Page: React.FC = () => {
   return (
     <div className="w-full justify-center items-center">
-      <Navbar />
-      <div className="flex flex-col h-auto items-center justify-end gap-4 px-4 py-8 relative w-full bg-[url(https://c.animaapp.com/bZ1whJ5m/img/frame-32.png)] bg-cover bg-center">
+      <div className="fixed z-50">
+        <Header />
+      </div>
+      <div className="flex flex-col h-auto items-center justify-end gap-4 px-4 py-8 relative w-full  bg-cover bg-center">
+        <div className="h-1/3 w-full">
+          <img
+            src="https://c.animaapp.com/bZ1whJ5m/img/frame-32.png"
+            alt="Hero Image"
+            className="w-screen "
+          />
+        </div>
+
         <div className="flex flex-wrap md:flex-nowrap md:gap-4 gap-2 md:w-[1000px] w-full  bg-[#ffffff80] shadow-md p-4 md:mr-20 md:ml-20 mt-32">
           <div className="flex items-center gap-2 bg-white px-4 py-2 flex-1">
             <div className="text-black text-sm md:text-base">Nov 28, 24</div>
@@ -106,9 +118,9 @@ const Page: React.FC = () => {
       </div>
 
       <div className="flex justify-center items-center w-full md:mt-10">
-      <RoomSection />
+        <RoomSection />
       </div>
-      
+
       {/* Location Section */}
       <div className="bg-[#fffdf6] px-4 py-10 items-center justify-center">
         <div className="text-center">

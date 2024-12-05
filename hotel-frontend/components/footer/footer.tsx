@@ -1,12 +1,14 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
     return (
         <div className="flex w-full justify-between items-center px-12 h-14 relative bg-[#5b5b5b]">
-
-            <p className="relative text-white text-base md:text-base text-[10px] mr-2 ml-2">
-                © 2024 Anantara Hotels &amp; Resorts
-            </p>
+            <Link href="/admin">
+                <p className="relative text-white text-base md:text-base text-[10px] mr-2 ml-2">
+                    © 2024 Anantara Hotels &amp; Resorts
+                </p>
+            </Link>
 
             <img
                 className="relative w-[155px] h-6 object-cover"
