@@ -1,10 +1,11 @@
 import Navbar from "@/components/navbar/navber";
 import Footer from "@/components/footer/footer";
 import FAQSection from "@/components/faq/faq";
+import RoomSection from "@/components/roomtype/roomtypeswitch";
 
 const Page: React.FC = () => {
   return (
-    <div>
+    <div className="w-full justify-center items-center">
       <Navbar />
       <div className="flex flex-col h-auto items-center justify-end gap-4 px-4 py-8 relative w-full bg-[url(https://c.animaapp.com/bZ1whJ5m/img/frame-32.png)] bg-cover bg-center">
         <div className="flex flex-wrap md:flex-nowrap md:gap-4 gap-2 md:w-[1000px] w-full  bg-[#ffffff80] shadow-md p-4 md:mr-20 md:ml-20 mt-32">
@@ -104,27 +105,28 @@ const Page: React.FC = () => {
         </ul>
       </div>
 
-      {/* Room and Suites Section */}
-
-
+      <div className="flex justify-center items-center w-full md:mt-10">
+      <RoomSection />
+      </div>
+      
       {/* Location Section */}
-      <div className="bg-[#fffdf6] px-4 py-10">
+      <div className="bg-[#fffdf6] px-4 py-10 items-center justify-center">
         <div className="text-center">
           <h2 className="text-black text-xl md:text-2xl">Location</h2>
           <h3 className="text-[#b4a258] text-lg md:text-2xl font-bold">
             THE SIGHTS AND SOUNDS OF BANGKOK
           </h3>
         </div>
-        <div className="flex flex-wrap md:flex-nowrap items-center gap-4 mt-8">
+        <div className="flex flex-wrap md:flex-nowrap items-center justify-center ml-10 mr-10 md:ml-32 md:mr-32 gap-4 mt-8 m-8">
           <img
-            className="w-full md:w-[50%] h-auto object-cover"
+            className="w-full md:w-[50%] h-auto object-cover "
             alt="Location Image"
             src="https://c.animaapp.com/bZ1whJ5m/img/image-11-1.png"
           />
-          <div className="text-black text-sm md:text-base md:w-[50%]">
-            <p>Anantara Siam Bangkok Hotel</p>
+          <div className="text-black text-center text-sm md:text-base md:w-[50%] md:ml-10">
+            <p className="mt-10">Anantara Siam Bangkok Hotel</p>
             <p>155 Rajadamri Road, Bangkok 10330</p>
-            <p>GPS: 13.7410148, 100.5400074</p>
+            <p className="mt-10">GPS: 13.7410148, 100.5400074</p>
           </div>
         </div>
       </div>

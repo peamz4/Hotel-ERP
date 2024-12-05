@@ -46,16 +46,16 @@ const Navbar: React.FC = () => {
         <Link href="/home">
           <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">HOME</p>
         </Link>
-        <Link href="/">
+        <Link href="/acommodation">
           <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">ACCOMMODATION</p>
         </Link>
         <Link href="/offers">
           <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">OFFERS</p>
         </Link>
-        <Link href="/">
+        <Link href="/facilities">
           <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">FACILITIES</p>
         </Link>
-        <Link href="/">
+        <Link href="/gallery">
           <p className="navbar-item hover:underline underline-offset-8 px-4 py-2 md:px-0 md:py-0">GALLERY</p>
         </Link>
       </div>
