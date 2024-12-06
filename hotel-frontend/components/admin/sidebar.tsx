@@ -46,7 +46,7 @@ const AdminSidebar = ({
           </li>
           <li className="ml-4">
             <button
-              onClick={() => setActiveComponent('roomManagement')}
+              onClick={() => setActiveComponent('roomManage')}
               className="block w-full text-left p-2 rounded hover:bg-gray-700 transition-colors"
             >
               Room Management

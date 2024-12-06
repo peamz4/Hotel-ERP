@@ -1,6 +1,8 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import router, { useRouter } from "next/navigation";
+
+
 
 const AdminLoginPage = () => {
   const [credentials, setCredentials] = useState({
@@ -8,10 +10,16 @@ const AdminLoginPage = () => {
     password: "",
   });
 
+  const router = useRouter();
+  useEffect(() => {
+    const isLogin = localStorage.getItem("isLogin");
+    if (isLogin !== "false") {
+        router.push("/admin/dashboard");
+    }
+}, [router]); 
+
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
