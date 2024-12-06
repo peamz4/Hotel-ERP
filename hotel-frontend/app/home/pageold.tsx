@@ -17,7 +17,7 @@ const Page: React.FC = () => {
               src="https://c.animaapp.com/bZ1whJ5m/img/line-1.svg"
             />
             <div className="text-black text-sm md:text-base">Nov 29, 24</div>
-          </div>
+        </div>
 
           {/* Guests */}
           <div className="flex items-center bg-white px-4 py-2 flex-1">

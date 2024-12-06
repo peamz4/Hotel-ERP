@@ -31,7 +31,7 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <div className="mt-5 md:px-20 px-5 py-10">
+        <div className="mt-5 px-5 py-10">
             <h3 className="text-[#b4a258] text-lg md:text-2xl font-bold text-center mb-10">
                 FREQUENTLY ASKED QUESTIONS
             </h3>
@@ -77,7 +77,7 @@ const FAQSection: React.FC = () => {
                             </span>
                         </button>
                         {activeIndex === index && (
-                            <p className="mt-2 text-sm md:text-base text-gray-600">{faq.answer}</p>
+                            <p className="ml-5 mt-5 text-sm md:text-base text-gray-800">{faq.answer}</p>
                         )}
                     </div>
                 ))}

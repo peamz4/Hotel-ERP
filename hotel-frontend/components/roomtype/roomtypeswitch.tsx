@@ -26,8 +26,8 @@ const RoomSection = () => {
     };
 
     return (
-        <div className="flex md:flex-row flex-col items-center px-0 py-[100px] -mt-10">
-            <div className=" relative md:w-[600px] w-[500px] md:h-[419px] h-[300px]">
+        <div className="flex md:flex-row flex-col justify-between py-20">
+            <div className="relative md:w-[80%] w-full">
                 <img
                     className="w-[595px] md:h-[419px] h-[300px] object-cover"
                     alt={activeTab}
@@ -86,8 +86,8 @@ const RoomSection = () => {
                     )}
                 </button>
             </div>
-            <div className="bg-[#EBEBEB] -ml-1">
-                <p className="md:w-[600px] w-[500px] md:h-[419px] h-[400px] text-black text-xl p-10 flex flex-col">
+            <div className="bg-[#EBEBEB] w-full">
+                <p className="text-black text-xl p-10 flex flex-col">
                     <span className="text-black text-xl">
                         {content[activeTab].title}
                         <br />
