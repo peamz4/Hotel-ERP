@@ -32,7 +32,7 @@ const FAQSection: React.FC = () => {
 
     return (
         <div className="mt-5 md:px-20 px-5 py-10">
-            <h3 className="text-[#b4a258] text-lg md:text-2xl font-bold text-center mb-10">
+            <h3 className="text-[#b4a258] text-lg xl:text-2xl 2xl:text-4xl font-bold text-center mb-10">
                 FREQUENTLY ASKED QUESTIONS
             </h3>
             <div className="space-y-4">
