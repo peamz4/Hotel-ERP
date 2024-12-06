@@ -1,10 +1,31 @@
+"use client";
+
 import Navbar from "@/components/navbar/navber";
 import Footer from "@/components/footer/footer";
 import FAQSection from "@/components/faq/faq";
 import RoomSection from "@/components/roomtype/roomtypeswitch";
 import BookingBar from "@/components/selecter/BookingBar";
+import { useEffect } from "react";
 
 const Page: React.FC = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll(".animate-class");
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isVisible) {
+          el.classList.add("show");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <main className="bg-white">
       <Navbar />
@@ -16,7 +37,7 @@ const Page: React.FC = () => {
 
       <div className="bg-white">
         <div className="container flex flex-col gap-10 pt-20">
-          <div className="text-center">
+          <div className="text-center animate-class">
             <h1 className="text-black text-xl md:text-3xl pb-3">
               Anantara Siam Bangkok Hotel
             </h1>
@@ -25,7 +46,7 @@ const Page: React.FC = () => {
             </h2>
           </div>
 
-          <div className="flex flex-col xl:flex-row w-full justify-between gap-20 py-10">
+          <div className="flex flex-col xl:flex-row w-full justify-between gap-20 py-10 animate-class">
             <img
               className="h-[320px] object-cover w-auto rounded-md"
               alt="Image"
@@ -69,7 +90,7 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full flex flex-col md:flex-row justify-between gap-10">
+          <div className="w-full flex flex-col md:flex-row justify-between gap-10 animate-class">
             <div className="flex flex-col justify-center items-start">
               <h3 className="text-[#b4a258] text-lg md:text-2xl font-bold">
                 HIGHLIGHTS
@@ -119,19 +140,21 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          <RoomSection />
+          <div className="animate-class">
+            <RoomSection />
+          </div>
         </div>
 
         <div className="bg-[#FFFDF6]">
           <div className="container flex flex-col justify-center items-center py-20 gap-10">
-            <div className="text-center">
+            <div className="text-center animate-class">
               <h1 className="text-black text-xl md:text-3xl pb-3">Location</h1>
               <h2 className="text-[#b4a258] text-lg md:text-4xl font-extrabold">
                 THE SIGHTS AND SOUNDS OF BANGKOK
               </h2>
             </div>
 
-            <div className="flex flex-col md:flex-row w-full justify-between items-center">
+            <div className="flex flex-col md:flex-row w-full justify-between items-center animate-class">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.4663992134906!2d100.54000741436187!3d13.741014803096159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed1c9f1d1f1%3A0xb34d4495e4ccb64a!2sAnantara%20Siam%20Bangkok%20Hotel!5e0!3m2!1sen!2sth!4v1670432552674!5m2!1sen!2sth"
                 className="w-full h-[300px] md:rounded-l-lg rounded-t-lg"
@@ -149,7 +172,7 @@ const Page: React.FC = () => {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container animate-class">
           <FAQSection />
         </div>
       </div>

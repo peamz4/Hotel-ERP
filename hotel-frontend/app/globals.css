@@ -23,7 +23,7 @@
 
 @layer utilities {
   .container {
-    @apply px-8 sm:px-12 max-w-[1200px] lg:m-auto;
+    @apply px-8 sm:px-12 max-w-[1400px] lg:m-auto;
   }
 }
 
