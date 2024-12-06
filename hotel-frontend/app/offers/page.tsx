@@ -9,7 +9,7 @@ const Page: React.FC = () => {
                 <Header />
             </div>
             <div className="flex flex-col items-center relative bg-white w-full">
-                <div className="flex flex-col items-center justify-center gap-2.5 px-5 sm:px-10 md:px-[120px] py-0 relative w-full bg-white">
+                <div className="flex flex-col items-center justify-center gap-2.5 px-5 sm:px-10 md:px-[120px] py-0 relative w-full bg-white mt-20">
 
                     <div className="flex flex-col md:flex-row items-start md:items-center justify-center md:gap-56 pt-10 md:pt-[100px] pb-0 w-full">
                         <div className="inline-flex flex-col items-start gap-5">

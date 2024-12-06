@@ -167,7 +167,7 @@ const Page: React.FC = () => {
       </div>
 
       {/* Location Section */}
-      <div className="bg-[#fffdf6] px-4 py-10 items-center justify-center">
+      <div className="bg-[#fffdf6] px-4 py-10 items-center justify-center animate-class">
         <div className="text-center">
           <h2 className="text-black text-xl md:text-2xl xl:text-3xl">Location</h2>
           <h3 className="text-[#b4a258] text-lg md:text-2xl xl:text-4xl font-bold">
@@ -188,7 +188,7 @@ const Page: React.FC = () => {
       </div>
 
       {/* Frequently Asked Questions Section */}
-      <div className="mt-24 ">
+      <div className="mt-24 animate-class ">
       <FAQSection />
       </div>
 
