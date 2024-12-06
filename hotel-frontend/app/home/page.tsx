@@ -1,21 +1,54 @@
+"use client";
 import Navbar from "@/components/navbar/navber";
 import Footer from "@/components/footer/footer";
 import FAQSection from "@/components/faq/faq";
 import RoomSection from "@/components/roomtype/roomtypeswitch";
 import BookingBar from "@/components/selecter/BookingBar";
+import Header from "@/components/homeheader";
+import { useEffect } from "react";
 
 const Page: React.FC = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll(".animate-class");
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isVisible) {
+          el.classList.add("show");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <main className="bg-white">
-      <Navbar />
-      <div className="w-full h-[600px] bg-[url(https://c.animaapp.com/bZ1whJ5m/img/frame-32.png)] bg-cover">
-        <div className="relative container h-full w-full flex justify-center items-center">
-          <BookingBar />
+      <div className="fixed z-50">
+        <Header />
+      </div>
+
+      <div className="w-full h-[800px] bg-cover flex">
+        <div className=" top-0 left-0 w-full h-auto mb-28 z-0">
+          <video
+            src="vids/compressed.mp4"
+            autoPlay
+            loop
+            muted
+            className="w-full h-4/5 object-cover absolute"
+          />
+
+          <div className="relative container h-full w-full flex justify-center items-center mt-60 z-10">
+            <BookingBar />
+          </div>
         </div>
       </div>
 
       <div className="bg-white">
-        <div className="container flex flex-col gap-10 pt-20">
+        <div className="container flex flex-col gap-10 pt-18 ">
           <div className="text-center">
             <h1 className="text-black text-xl md:text-3xl pb-3">
               Anantara Siam Bangkok Hotel
@@ -25,7 +58,7 @@ const Page: React.FC = () => {
             </h2>
           </div>
 
-          <div className="flex flex-col xl:flex-row w-full justify-between gap-20 py-10">
+          <div className="flex flex-col xl:flex-row w-full justify-between gap-20 py-10 animate-class">
             <img
               className="h-[320px] object-cover w-auto rounded-md"
               alt="Image"
@@ -69,7 +102,7 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full flex flex-col md:flex-row justify-between gap-10">
+          <div className="w-full flex flex-col md:flex-row justify-between gap-10 animate-class">
             <div className="flex flex-col justify-center items-start">
               <h3 className="text-[#b4a258] text-lg md:text-2xl font-bold">
                 HIGHLIGHTS
@@ -118,8 +151,9 @@ const Page: React.FC = () => {
               </div>
             </div>
           </div>
-
-          <RoomSection />
+          <div className="animate-class">
+            <RoomSection />
+          </div>
         </div>
 
         <div className="bg-[#FFFDF6]">
@@ -131,25 +165,20 @@ const Page: React.FC = () => {
               </h2>
             </div>
 
-            <div className="flex flex-col md:flex-row w-full justify-between items-center">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.4663992134906!2d100.54000741436187!3d13.741014803096159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed1c9f1d1f1%3A0xb34d4495e4ccb64a!2sAnantara%20Siam%20Bangkok%20Hotel!5e0!3m2!1sen!2sth!4v1670432552674!5m2!1sen!2sth"
-                className="w-full h-[300px] md:rounded-l-lg rounded-t-lg"
-                loading="lazy"
-              ></iframe>
-              <div className="bg-white w-full h-[300px] p-16 md:rounded-r-lg rounded-b-lg flex justify-center items-center">
-                <p className="text-base text-black">
-                  Anantara Siam Bangkok Hotel 155 Rajadamri Road, Bangkok 10330{" "}
-                  <br></br>
-                  <br></br>
-                  <span>GPS: 13.7410148,100.5400074</span>
-                </p>
+            <div className="flex flex-wrap md:flex-nowrap items-center justify-center ml-10 mr-10 md:ml-32 md:mr-32 gap-4 mt-8">
+              <div style={{ width: "600px", height: "300px" }}>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7751.262274761084!2d100.539878!3d13.740768000000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ec519fb0c57%3A0xc1a9f1aa0783d16a!2sAnantara%20Siam%20Bangkok%20Hotel!5e0!3m2!1sen!2sth!4v1733457526319!5m2!1sen!2sth" width="600" height="450" loading="lazy"></iframe>
+              </div>
+              <div className="text-black text-center text-sm md:text-base md:w-[50%] md:ml-10">
+                <p className="mt-10">Anantara Siam Bangkok Hotel</p>
+                <p>155 Rajadamri Road, Bangkok 10330</p>
+                <p className="mt-10">GPS: 13.7410148, 100.5400074</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container">
+        <div className="container pt-12">
           <FAQSection />
         </div>
       </div>
