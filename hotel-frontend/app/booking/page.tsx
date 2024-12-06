@@ -22,13 +22,13 @@ const Page: React.FC = () => {
                         <h3>
                             Deluxe Room
                         </h3>
-                        <p>Maximum 2 adults or 1 adult + 1 children</p>
-                        <p className="text-[#388626]">Include Breakfast</p>
-                        <p>Non-refunable</p>
-                        <p>Cancellation Policy:</p>
-                        <p>Reservation may not be cancelled. Full<br />payment will be forfeited.</p>
-                        <p>Deposit Policy:</p>
-                        <p>A deposit is not required to garantee<br />this reservation.</p>
+                        <p className="py-2">Maximum 2 adults or 1 adult + 1 children</p>
+                        <p className="text-[#388626] py-2">Include Breakfast</p>
+                        <p className="py-2">Non-refunable</p>
+                        <p className="py-2">Cancellation Policy:</p>
+                        <p className="py-2">Reservation may not be cancelled. Full<br />payment will be forfeited.</p>
+                        <p className="py-2">Deposit Policy:</p>
+                        <p className="py-2">A deposit is not required to garantee<br />this reservation.</p>
                         <div className="flex justify-center">
                             <button
                                 className="text-[#b4a258] border-2 border-[#b4a258] w-48 md:mb-0 mb-10">

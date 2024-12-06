@@ -8,7 +8,7 @@ const Page: React.FC = () => {
         <div>
             <Navbar />
             {/* Add the PaymentMethod component here */}
-            <div className="mt-10">
+            <div className="my-10">
                 <PaymentMethod />
             </div>
             <Footer />
