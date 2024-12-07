@@ -1,4 +1,4 @@
-const e = require('express');
+
 const mongoose = require('mongoose');
 
 const roomSchema = new mongoose.Schema({
@@ -8,7 +8,7 @@ const roomSchema = new mongoose.Schema({
     extra_bed: { type: String, required: true, enum: ['yes','no']  },
     description: { type: String },
     price: { type: Number, required: true },
-    status: { type: String, required: true, enum: ['available', 'occupied', "renovating"] },
+    status: { type: String, required: true },
 });
 
 module.exports = mongoose.model('Room', roomSchema);
