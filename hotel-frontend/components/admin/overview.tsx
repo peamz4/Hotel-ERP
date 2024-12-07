@@ -28,14 +28,14 @@ const Overview = () => {
           setData(response.data.data);
 
           // Calculate total customers (unique customers based on email)
-          const uniqueCustomers = new Set(response.data.data.map(item => item.email));
+          const uniqueCustomers = new Set(response.data.data.map((item: { email: any; }) => item.email));
           setTotalCustomer(uniqueCustomers.size);
 
           // Calculate all-time bookings (total number of records)
           setAllTimeBooked(response.data.data.length);
 
           // Calculate net income (sum of totalPrice from all bookings)
-          const totalIncome = response.data.data.reduce((sum, item) => sum + item.totalPrice, 0);
+          const totalIncome = response.data.data.reduce((sum: any, item: { totalPrice: any; }) => sum + item.totalPrice, 0);
           setNetIncome(totalIncome);
         }
       })
