@@ -88,9 +88,9 @@ const Page: React.FC = () => {
                         from <span className="text-xl">5,220 THB</span>
                       </p>
                     </div>
-                    <button className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded">
+                    <a href="acommodation/deluxeroom" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
                       Select
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -117,9 +117,9 @@ const Page: React.FC = () => {
                         from <span className="text-xl">5,220 THB</span>
                       </p>
                     </div>
-                    <button className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded">
+                    <a href="acommodation/kasaraclubroom" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
                       Select
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -146,9 +146,9 @@ const Page: React.FC = () => {
                         from <span className="text-xl">6,663 THB</span>
                       </p>
                     </div>
-                    <button className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded">
+                    <a href="acommodation/premieroom" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
                       Select
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -207,9 +207,9 @@ const Page: React.FC = () => {
                         from <span className="text-xl">6,663 THB</span>
                       </p>
                     </div>
-                    <button className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded">
+                    <a href="/Kasara_Club_Room" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
                       Select
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -236,9 +236,9 @@ const Page: React.FC = () => {
                         from <span className="text-xl">6,663 THB</span>
                       </p>
                     </div>
-                    <button className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded">
+                    <a href="/Kasara_Club_Room" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
                       Select
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -265,9 +265,9 @@ const Page: React.FC = () => {
                         from <span className="text-xl">6,663 THB</span>
                       </p>
                     </div>
-                    <button className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded">
+                    <a href="/Kasara_Club_Room" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
                       Select
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
