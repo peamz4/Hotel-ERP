@@ -13,10 +13,10 @@ const AdminLoginPage = () => {
   const router = useRouter();
   useEffect(() => {
     const isLogin = localStorage.getItem("isLogin");
-    if (isLogin !== "false") {
+    if (isLogin === "true") {
         router.push("/admin/dashboard");
     }
-}, [router]); 
+}, [router]);
 
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);

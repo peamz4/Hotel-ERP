@@ -2,7 +2,7 @@
 
 const LoadingPage = () => {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-full bg-transparent">
       <div className="text-center">
         <div className="w-16 h-16 border-4 border-t-4 border-gray-500 border-solid animate-bounce rounded-full  mx-auto mb-4"></div>
         <div className="flex gap-4 "> 

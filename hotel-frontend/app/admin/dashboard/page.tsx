@@ -37,7 +37,7 @@ export default function HotelReportPage() {
             case "overview":
                 return <Overview />;
             case "roomDashboard":
-                return <RoomDashboard />;
+                return <RoomDashboard/>;
             case "Booking":
                 return <Booking />;
             case "roomManage":

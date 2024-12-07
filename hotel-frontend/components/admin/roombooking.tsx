@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const RoomBooking = () => {
   const [formData, setFormData] = useState({
@@ -11,12 +11,48 @@ const RoomBooking = () => {
     extraBed: 0,
     adults: 0,
     children: 0,
+    price: 0,
   });
 
+  interface Room {
+    room_id: string;
+    type: string;
+    description: string;
+    price: number;
+  }
+
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
   const [generatedCustomerId] = useState("CUST-" + Math.floor(Math.random() * 1000));
   const [generatedBookId] = useState("BOOK-" + Math.floor(Math.random() * 1000));
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // 🔥 โหลดข้อมูลแบบ Real-Time
+  const loadRoomData = () => {
+    const roomData = localStorage.getItem("selectedRoom");
+    if (roomData) {
+      const parsedRoomData = JSON.parse(roomData);
+      setSelectedRoom(parsedRoomData);
+      setFormData((prevData) => ({
+        ...prevData,
+        price: parsedRoomData.price || 0, // ตั้งค่าเริ่มต้นราคา
+      }));
+    }
+  };
+
+  // 📥 โหลดข้อมูลครั้งแรก
+  useEffect(() => {
+    loadRoomData();
+  }, []);
+
+  // 📡 โหลดข้อมูลแบบ Real-Time ทุกๆ 1 วินาที
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      loadRoomData();
+    }, 1000); // อัปเดตทุก 1 วินาที
+
+    return () => clearInterval(intervalId); // ล้าง interval เมื่อ component unmount
+  }, []);
+
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -24,24 +60,29 @@ const RoomBooking = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     alert("Room booked successfully!");
     // Handle booking submission logic
   };
 
-  const price = 12800; // Example base price for the room
   const extraBedPrice = 500;
   const taxesFees = 500;
 
-  const totalPrice = price + formData.extraBed * extraBedPrice + taxesFees;
+  const totalPrice = (selectedRoom?.price || 0) + formData.extraBed * extraBedPrice + taxesFees;
 
   return (
     <div className="p-6 bg-transparent rounded-lg ">
       <h1 className="text-2xl font-bold text-[#5C5C5C]">Booking Room</h1>
 
       <div className="mt-6">
-        <p className="font-medium text-black">Selecting: B2 - 304 (Studio)</p>
+        {selectedRoom ? (
+          <p className="font-medium text-black">
+            Selecting: {selectedRoom.room_id} - {selectedRoom.type} ({selectedRoom.description})
+          </p>
+        ) : (
+          <p className="font-medium text-black">Loading room data...</p>
+        )}
 
         <div className="mt-6">
           <h2 className="text-xl font-medium text-[#5C5C5C]">Customer Contact</h2>
@@ -145,55 +186,9 @@ const RoomBooking = () => {
             </div>
 
             <div className="mt-6">
-              <h2 className="text-xl font-medium text-[#5C5C5C] mt-12">Extra bed & Taxes</h2>
-
-              <div className="grid grid-cols-2 gap-4 mt-2">
-                <div>
-                  <label htmlFor="extraBed" className="block text-sm font-medium text-gray-700">
-                    Extra bed
-                  </label>
-                  <input
-                    id="extraBed"
-                    type="number"
-                    name="extraBed"
-                    min="0"
-                    value={formData.extraBed}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="adults" className="block text-sm font-medium text-gray-700">
-                    Adults
-                  </label>
-                  <input
-                    id="adults"
-                    type="number"
-                    name="adults"
-                    value={formData.adults}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="children" className="block text-sm font-medium text-gray-700">
-                    Children
-                  </label>
-                  <input
-                    id="children"
-                    type="number"
-                    name="children"
-                    value={formData.children}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <p className="text-lg font-medium text-[#5C5C5C]">Total (Include Taxes & Fees): {totalPrice} ฿</p>
+              <p className="text-lg font-medium text-[#5C5C5C]">
+                Total (Include Taxes & Fees): {totalPrice} ฿
+              </p>
             </div>
 
             <div className="mt-6">
