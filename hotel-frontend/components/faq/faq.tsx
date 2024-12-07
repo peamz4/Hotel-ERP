@@ -77,7 +77,7 @@ const FAQSection: React.FC = () => {
                             </span>
                         </button>
                         {activeIndex === index && (
-                            <p className="ml-5 mt-5 text-sm md:text-base text-gray-800">{faq.answer}</p>
+                            <p className="ml-5 mt-5 text-sm md:text-base text-gray-">{faq.answer}</p>
                         )}
                     </div>
                 ))}
