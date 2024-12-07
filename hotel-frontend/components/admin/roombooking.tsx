@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const RoomBooking = () => {
   const [formData, setFormData] = useState({
@@ -9,39 +9,99 @@ const RoomBooking = () => {
     checkInDate: "",
     checkOutDate: "",
     extraBed: 0,
-    adults: 0,
-    children: 0,
+    price: 0,
   });
 
+  interface Room {
+    room_id: string;
+    type: string;
+    description: string;
+    price: number;
+  }
+
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
   const [generatedCustomerId] = useState("CUST-" + Math.floor(Math.random() * 1000));
   const [generatedBookId] = useState("BOOK-" + Math.floor(Math.random() * 1000));
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const loadRoomData = () => {
+    const roomData = localStorage.getItem("selectedRoom");
+    if (roomData) {
+      const parsedRoomData = JSON.parse(roomData);
+      setSelectedRoom(parsedRoomData);
+      setFormData((prevData) => ({
+        ...prevData,
+        price: parsedRoomData.price || 0,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    loadRoomData();
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      loadRoomData();
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === 'extraBed' ? Number(value) : value,
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    alert("Room booked successfully!");
-    // Handle booking submission logic
+    
+    const bookingData = {
+      customerId: generatedCustomerId,
+      bookId: generatedBookId,
+      ...formData,
+      room: selectedRoom,
+      totalPrice: totalPrice
+    };
+  
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/book/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData)
+      });
+  
+      const result = await response.json();
+      if (response.ok) {
+        alert('Booking created successfully! 🎉');
+      } else {
+        alert(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while booking the room');
+    }
   };
 
-  const price = 12800; // Example base price for the room
   const extraBedPrice = 500;
   const taxesFees = 500;
 
-  const totalPrice = price + formData.extraBed * extraBedPrice + taxesFees;
+  const totalPrice = (selectedRoom?.price || 0) + formData.extraBed * extraBedPrice + taxesFees;
 
   return (
     <div className="p-6 bg-transparent rounded-lg ">
       <h1 className="text-2xl font-bold text-[#5C5C5C]">Booking Room</h1>
 
       <div className="mt-6">
-        <p className="font-medium text-black">Selecting: B2 - 304 (Studio)</p>
+        {selectedRoom ? (
+          <p className="font-medium text-black">
+            Selecting: {selectedRoom.room_id} - {selectedRoom.type} ({selectedRoom.description})
+          </p>
+        ) : (
+          <p className="font-medium text-black">Loading room data...</p>
+        )}
 
         <div className="mt-6">
           <h2 className="text-xl font-medium text-[#5C5C5C]">Customer Contact</h2>
@@ -49,7 +109,7 @@ const RoomBooking = () => {
           <form onSubmit={handleSubmit} className="space-y-4 mt-2">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="firstName" className="block text-sm font-medium text-black">
                   First Name
                 </label>
                 <input
@@ -63,7 +123,7 @@ const RoomBooking = () => {
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="lastName" className="block text-sm font-medium text-black">
                   Last Name
                 </label>
                 <input
@@ -80,7 +140,7 @@ const RoomBooking = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium text-black">
                   Email
                 </label>
                 <input
@@ -94,7 +154,7 @@ const RoomBooking = () => {
                 />
               </div>
               <div>
-                <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="phoneNumber" className="block text-sm font-medium text-black">
                   Phone Number
                 </label>
                 <input
@@ -113,7 +173,7 @@ const RoomBooking = () => {
               <h2 className="text-xl font-medium text-[#5C5C5C] mt-12">Room Details</h2>
               <div className="grid grid-cols-2 gap-4 mt-2">
                 <div>
-                  <label htmlFor="checkInDate" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="checkInDate" className="block text-sm font-medium text-black">
                     Check-in Date
                   </label>
                   <input
@@ -128,7 +188,7 @@ const RoomBooking = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="checkOutDate" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="checkOutDate" className="block text-sm font-medium text-black">
                     Check-out Date
                   </label>
                   <input
@@ -144,56 +204,27 @@ const RoomBooking = () => {
               </div>
             </div>
 
-            <div className="mt-6">
-              <h2 className="text-xl font-medium text-[#5C5C5C] mt-12">Extra bed & Taxes</h2>
-
-              <div className="grid grid-cols-2 gap-4 mt-2">
-                <div>
-                  <label htmlFor="extraBed" className="block text-sm font-medium text-gray-700">
-                    Extra bed
-                  </label>
-                  <input
-                    id="extraBed"
-                    type="number"
-                    name="extraBed"
-                    min="0"
-                    value={formData.extraBed}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="adults" className="block text-sm font-medium text-gray-700">
-                    Adults
-                  </label>
-                  <input
-                    id="adults"
-                    type="number"
-                    name="adults"
-                    value={formData.adults}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="children" className="block text-sm font-medium text-gray-700">
-                    Children
-                  </label>
-                  <input
-                    id="children"
-                    type="number"
-                    name="children"
-                    value={formData.children}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-              </div>
+            <div className="mt-4">
+              <label htmlFor="extraBed" className="block text-sm font-medium text-black">
+                Extra Bed
+              </label>
+              <select
+                id="extraBed"
+                name="extraBed"
+                value={formData.extraBed}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 text-black rounded-md"
+              >
+                <option value={0}>0</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+              </select>
             </div>
 
             <div className="mt-6">
-              <p className="text-lg font-medium text-[#5C5C5C]">Total (Include Taxes & Fees): {totalPrice} ฿</p>
+              <p className="text-lg font-medium text-[#5C5C5C]">
+                Total (Include Taxes & Fees): {totalPrice} ฿
+              </p>
             </div>
 
             <div className="mt-6">

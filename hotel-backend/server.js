@@ -9,6 +9,7 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const roomRoutes = require('./routes/roomRoutes');
 const roomTypeRoutes = require('./routes/roomTypeRoutes');
 const authRoutes = require('./routes/authRoutes');
+const roomBookingRoutes = require('./routes/roomBookingRoutes');
 
 const cors = require('cors');
 
@@ -29,6 +30,7 @@ app.use('/api/v1/payments', paymentRoutes);
 app.use('/api/v1/rooms', roomRoutes);
 app.use('/api/v1/roomtypes', roomTypeRoutes);
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/book', roomBookingRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(

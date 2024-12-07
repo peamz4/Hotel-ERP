@@ -5,6 +5,11 @@ import { useEffect } from "react";
 
 const Page = () => {
   const router = useRouter();
+  const isLogin = localStorage.getItem("isLogin") === null;
+
+  if (isLogin) {
+    localStorage.setItem("isLogin", "false");
+  }
 
   useEffect(() => {
     router.push("/home");

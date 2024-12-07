@@ -1,6 +1,6 @@
 const Room = require('../models/roomModel');
 
-// Create a new room
+// 📌 Create a new room
 exports.createRoom = async (req, res) => {
     try {
         const { room_id, type, bed, extra_bed, description, price, status } = req.body;
@@ -27,21 +27,21 @@ exports.createRoom = async (req, res) => {
     }
 };
 
-// Get all rooms
+// 📌 Get all rooms
 exports.getAllRooms = async (req, res) => {
     try {
-        const rooms = await Room.find(); // No need to populate as type is a simple field
+        const rooms = await Room.find();
         res.status(200).json({ rooms });
     } catch (error) {
         res.status(500).json({ message: 'Error fetching rooms', error: error.message });
     }
 };
 
-// Get a single room by ID
+// 📌 Get a single room by **room_id**
 exports.getRoomById = async (req, res) => {
     try {
         const { id } = req.params;
-        const room = await Room.findById(id);
+        const room = await Room.findOne({ room_id: id }); // 🔥 Use room_id instead of _id
 
         if (!room) {
             return res.status(404).json({ message: 'Room not found' });
@@ -53,16 +53,20 @@ exports.getRoomById = async (req, res) => {
     }
 };
 
-// Update a room
+// 📌 Update a room by **room_id**
 exports.updateRoom = async (req, res) => {
     try {
         const { id } = req.params;
         const updatedData = req.body;
 
-        const room = await Room.findByIdAndUpdate(id, updatedData, {
-            new: true,
-            runValidators: true,
-        });
+        const room = await Room.findOneAndUpdate(
+            { room_id: id },  // 🔥 Use room_id instead of _id
+            updatedData, 
+            { 
+                new: true, 
+                runValidators: true 
+            }
+        );
 
         if (!room) {
             return res.status(404).json({ message: 'Room not found' });
@@ -74,11 +78,11 @@ exports.updateRoom = async (req, res) => {
     }
 };
 
-// Delete a room
+// 📌 Delete a room by **room_id**
 exports.deleteRoom = async (req, res) => {
     try {
         const { id } = req.params;
-        const room = await Room.findByIdAndDelete(id);
+        const room = await Room.findOneAndDelete({ room_id: id }); // 🔥 Use room_id instead of _id
 
         if (!room) {
             return res.status(404).json({ message: 'Room not found' });
