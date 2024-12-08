@@ -184,7 +184,7 @@ const InvoicingAndReceipt: React.FC = () => {
   };
 
   return (
-    <div className="p-6 flex flex-col gap-5">
+    <div className="p-6 flex flex-col gap-5 text-black">
       <div className="w-full flex justify-between items-center mb-5">
         <h1 className="text-3xl font-extrabold text-[#5C5C5C]">Invoicing & Receipt</h1>
         <form className="">

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const AdminSidebar = ({
   setActiveComponent,
@@ -12,8 +12,9 @@ const AdminSidebar = ({
         <Image
           src="/logo/logo.png"
           alt="Logo"
-          width={200}
-          height={120}
+          className="h-[60px] w-auto"
+          width={1000}
+          height={1000}
         />
       </div>
 
@@ -22,40 +23,40 @@ const AdminSidebar = ({
         <ul className="space-y-4">
           <li>
             <button
-              onClick={() => setActiveComponent('overview')}
-              className="block w-full text-left p-2 rounded hover:bg-gray-700 transition-colors"
+              onClick={() => setActiveComponent("overview")}
+              className="block w-full text-left px-3 py-2 rounded hover:bg-primary transition-colors"
             >
               Overview
             </button>
           </li>
           <li>
             <button
-              onClick={() => setActiveComponent('roomDashboard')}
-              className="block w-full text-left p-2 rounded hover:bg-gray-700 transition-colors"
+              onClick={() => setActiveComponent("roomDashboard")}
+              className="block w-full text-left px-3 py-2 rounded hover:bg-primary transition-colors"
             >
               Available Room
             </button>
           </li>
           <li className="ml-4">
             <button
-              onClick={() => setActiveComponent('roomManage')}
-              className="block w-full text-left p-2 rounded hover:bg-gray-700 transition-colors"
+              onClick={() => setActiveComponent("roomManage")}
+              className="block w-full text-left px-3 py-2 rounded hover:bg-primary transition-colors"
             >
               Room Management
             </button>
           </li>
           <li>
             <button
-              onClick={() => setActiveComponent('invoicingReceipts')}
-              className="block w-full text-left p-2 rounded hover:bg-gray-700 transition-colors"
+              onClick={() => setActiveComponent("invoicingReceipts")}
+              className="block w-full text-left px-3 py-2 rounded hover:bg-primary transition-colors"
             >
               Invoicing & Receipts
             </button>
           </li>
           <li>
             <button
-              onClick={() => setActiveComponent('promotionsDiscounts')}
-              className="block w-full text-left p-2 rounded hover:bg-gray-700 transition-colors"
+              onClick={() => setActiveComponent("promotionsDiscounts")}
+              className="block w-full text-left px-3 py-2 rounded hover:bg-primary transition-colors"
             >
               Promotions & Discounts
             </button>

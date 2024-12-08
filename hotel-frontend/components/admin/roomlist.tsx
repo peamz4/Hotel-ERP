@@ -140,7 +140,7 @@ const RoomList = () => {
           <select
             value={sortField}
             onChange={(e) => setSortField(e.target.value)}
-            className="mt-4 border w-[160px] bg-[#5C5C5C] border-gray-300 rounded px-4 py-2"
+            className="mt-4 border w-[160px] bg-primary border-gray-300 rounded px-4 py-2"
           >
             <option value="room_id">Room ID</option>
             <option value="type">Room Type</option>
@@ -152,7 +152,7 @@ const RoomList = () => {
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
-            className="mt-4 border w-[160px] bg-[#5C5C5C] border-gray-300 rounded px-4 py-2"
+            className="mt-4 border w-[160px] bg-primary border-gray-300 rounded px-4 py-2"
           >
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
@@ -160,10 +160,10 @@ const RoomList = () => {
         </div>
       </div>
 
-      <div className="mt-6 overflow-auto border-[2px] border-[#5C5C5C]">
+      <div className="mt-6 overflow-auto border-[2px] border-primary rounded-md">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#D9D9D9] border-[#5C5C5C] border text-[#5C5C5C]">
+            <tr className="bg-primary border-primary border text-[#ffffff]">
               <th className="px-4 py-2 ">Room NO.</th>
               <th className="px-4 py-2 ">Room Type</th>
               <th className="px-4 py-2 ">Bed</th>
@@ -178,7 +178,7 @@ const RoomList = () => {
             {currentRooms.map((room, index) => (
               <tr
                 key={index}
-                className="odd:bg-white even:bg-transparent text-[#5C5C5C]  hover:bg-gray-50"
+                className="odd:bg-white even:bg-transparent text-[#5C5C5C] hover:bg-gray-50 "
               >
                 <td className="px-4 py-2 border-y border-l border-[#5C5C5C]">
                   {room.room_id}
@@ -203,7 +203,7 @@ const RoomList = () => {
                 </td>
                 <td className="px-4 py-2 border-y border-r border-[#5C5C5C] text-right">
                   <button
-                    className="text-center text-black rounded w-full bg-[#fcdf39]"
+                    className="text-center px-3 py-1 text-primary hover:text-white rounded-full w-full border-2 border-primary hover:bg-primaryDark"
                     onClick={() => handleEdit(room)}
                   >
                     Edit
@@ -216,22 +216,24 @@ const RoomList = () => {
       </div>
 
       {/* Pagination Controls */}
-      <div className="mt-6 flex justify-center space-x-4 ">
-        <button
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-500 text-white rounded disabled:opacity-50"
-        >
-          &lt;&lt;
-        </button>
-        <span className="self-center text-xl text-[#5C5C5C]">{currentPage}</span>
-        <button
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-500 text-white rounded disabled:opacity-50"
-        >
-          &gt;&gt;
-        </button>
+      <div className="w-full flex justify-end">
+        <div className="mt-6 flex justify-center items-center gap-4">
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded"
+          >
+            &lt;&lt;
+          </button>
+          <div className="text-2xl font-thin text-gray-600">{currentPage}</div>
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded"
+          >
+            &gt;&gt;
+          </button>
+        </div>
       </div>
 
       {/* Edit Room Modal */}
@@ -286,7 +288,7 @@ const RoomList = () => {
                 Cancel
               </button>
               <button
-                className="px-4 py-2 bg-blue-500 text-white rounded"
+                className="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded"
                 onClick={saveChanges}
               >
                 Save

@@ -73,12 +73,12 @@ const PromotionAndDiscount = () => {
   };
 
   return (
-    <div className="p-6 flex flex-col gap-5">
+    <div className="p-6 flex flex-col gap-5 text-black">
       <h1 className="text-3xl font-extrabold text-[#5C5C5C]">Promotion & Discount</h1>
       {/* Promotions Table */}
-      <div className="mt-10 overflow-x-auto text-black border-b-2 border-black pb-10">
-        <table className="w-full table-auto text-left border-collapse border border-black">
-          <thead className="bg-black">
+      <div className="mt-5 overflow-x-auto text-black border-b-2pb-10">
+        <table className="w-full table-auto text-left border-collapse border">
+          <thead className="bg-primary border-primary border text-[#ffffff]">
             <tr className="text-white">
               <th className="px-4 py-2">Promotion ID</th>
               <th className="px-4 py-2">Description</th>
@@ -114,9 +114,8 @@ const PromotionAndDiscount = () => {
         </table>
       </div>
       {/* Promotion Input Fields */}
-      <div className="grid grid-cols-2 gap-10 px-20">
+      <div className="grid grid-cols-2 gap-10 py-5">
         <div className="flex flex-col">
-          <h1 className="text-2xl font-extrabold text-[#5C5C5C]">Promotion & Discount</h1>
           <label className="text-[#5C5C5C] mb-2 text-sm font-semibold" htmlFor="promotionID">
             Promotion ID
           </label>
@@ -163,7 +162,7 @@ const PromotionAndDiscount = () => {
           />
         </div>
         <div className="w-full flex justify-center items-start">
-          <button className="bg-[#5C5C5C] w-full py-3 rounded-lg mt-8 hover:scale-[0.99] transition-all" onClick={handleSaveChanges}>
+          <button className="bg-primary hover:bg-primaryDark text-white w-full py-3 rounded-lg mt-8 hover:scale-[0.99] transition-all" onClick={handleSaveChanges}>
             Save changes
           </button>
         </div>

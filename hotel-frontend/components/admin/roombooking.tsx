@@ -92,7 +92,7 @@ const RoomBooking = () => {
   const discountedTotalPrice = ((totalPrice - (totalPrice * (parseFloat(localStorage.getItem("discount") || "0") / 100))) * parseInt(localStorage.getItem("totalDays") || "1")).toFixed(2);
 
   return (
-    <div className="bg-transparent rounded-lg ">
+    <div className="bg-transparent rounded-lg text-black">
       <h1 className="text-2xl font-bold text-[#5C5C5C]">Booking Room</h1>
 
       <div className="mt-6">
@@ -261,7 +261,7 @@ const RoomBooking = () => {
 
                 }}
                 type="submit"
-                className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition"
+                className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md  transition"
               >
                 Book Now
               </button>

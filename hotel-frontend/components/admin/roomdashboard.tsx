@@ -31,8 +31,12 @@ const RoomDashboard = () => {
     const fetchRooms = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3001/api/v1/rooms/getall");
-        const available = response.data.rooms.filter((room: Room) => room.status === "available");
+        const response = await axios.get(
+          "http://localhost:3001/api/v1/rooms/getall"
+        );
+        const available = response.data.rooms.filter(
+          (room: Room) => room.status === "available"
+        );
         setAvailableRooms(available);
         setFilteredRooms(available);
         setLoading(false);
@@ -49,11 +53,15 @@ const RoomDashboard = () => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
-    const filtered = availableRooms.filter((room) =>
-      room.room_id.toLowerCase().includes(query) ||
-      room.type.toLowerCase().includes(query) ||
-      (room.bed && typeof room.bed === 'string' ? room.bed.toLowerCase() : '').includes(query) || 
-      room.description.toLowerCase().includes(query)
+    const filtered = availableRooms.filter(
+      (room) =>
+        room.room_id.toLowerCase().includes(query) ||
+        room.type.toLowerCase().includes(query) ||
+        (room.bed && typeof room.bed === "string"
+          ? room.bed.toLowerCase()
+          : ""
+        ).includes(query) ||
+        room.description.toLowerCase().includes(query)
     );
     setFilteredRooms(filtered);
     setCurrentPage(1);
@@ -106,68 +114,101 @@ const RoomDashboard = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="p-6 bg-transparent rounded-lg">
+    <div className="p-6 bg-transparent rounded-lg text-black">
       <h1 className="text-3xl font-bold text-[#5C5C5C]">Available Rooms</h1>
 
-      {/* 🔍 Search Field */}
-      <div className="mt-4">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearch}
-          placeholder="Search by Room ID, Type, Bed, or Description"
-          className="w-full p-2 border border-gray-300 rounded text-black"
-        />
-      </div>
-
-      {/* 💸 Promotion Code */}
-      <div className="mt-4">
-        <input
-          type="text"
-          value={promotionCode}
-          onChange={handlePromotionCode}
-          placeholder="Enter promotion code"
-          className="w-full p-2 border border-gray-300 rounded text-black"
-        />
+      <div className="w-full flex flex-col gap-5 pt-8">
+        {/* 🔍 Search Field */}
+        <div className="">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Search by Room ID, Type, Bed, or Description"
+            className="w-full p-2 border border-gray-300 rounded text-black"
+          />
+        </div>
+        {/* 💸 Promotion Code */}
+        <div className="">
+          <input
+            type="text"
+            value={promotionCode}
+            onChange={handlePromotionCode}
+            placeholder="Enter promotion code"
+            className="w-full p-2 border border-gray-300 rounded text-black"
+          />
+        </div>
         <button
           onClick={applyPromotionCode}
-          className="mt-2 w-full bg-blue-500 text-white p-2 rounded"
+          className="mt-2 w-full bg-primary hover:bg-primaryDark text-white p-2 rounded"
         >
           Apply Code
         </button>
       </div>
 
-      <div className="mt-6 overflow-auto border-[2px]">
+      <div className="border-t border-gray-300 my-7"></div>
+
+      <div className="mt-6 overflow-hidden border-[2px] rounded-md ">
         <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="bg-[#D9D9D9] border-[#5C5C5C] border text-[#5C5C5C]">
-              <th onClick={() => handleSort("room_id")} className="px-4 py-2 cursor-pointer">Room NO.</th>
-              <th onClick={() => handleSort("type")} className="px-4 py-2 cursor-pointer">Room Type</th>
+          <thead className="rounded-md ">
+            <tr className="bg-primary border-primary border text-[#ffffff]">
+              <th
+                onClick={() => handleSort("room_id")}
+                className="px-4 py-2 cursor-pointer"
+              >
+                Room NO.
+              </th>
+              <th
+                onClick={() => handleSort("type")}
+                className="px-4 py-2 cursor-pointer"
+              >
+                Room Type
+              </th>
               <th className="px-4 py-2">Bed</th>
               <th className="px-4 py-2">Extra Bed</th>
               <th className="px-4 py-2">Description</th>
-              <th onClick={() => handleSort("price")} className="px-4 py-2 cursor-pointer">Price (Net)</th>
+              <th
+                onClick={() => handleSort("price")}
+                className="px-4 py-2 cursor-pointer"
+              >
+                Price (Net)
+              </th>
               <th className="px-4 py-2"></th>
             </tr>
           </thead>
           <tbody>
             {currentRooms.map((room) => (
-              <tr key={room.room_id} className="odd:bg-white even:bg-transparent text-[#5C5C5C] hover:bg-gray-50">
-                <td className="px-4 py-2 border-y border-l border-[#5C5C5C]">{room.room_id}</td>
-                <td className="px-4 py-2 border-y border-[#5C5C5C]">{room.type}</td>
-                <td className="px-4 py-2 border-y border-[#5C5C5C]">{room.bed}</td>
-                <td className="px-4 py-2 border-y border-[#5C5C5C]">{room.extra_bed}</td>
-                <td className="px-4 py-2 border-y border-[#5C5C5C]">{room.description}</td>
+              <tr
+                key={room.room_id}
+                className="odd:bg-white even:bg-transparent text-[#5C5C5C] hover:bg-gray-50"
+              >
+                <td className="px-4 py-2 border-y border-l border-[#5C5C5C]">
+                  {room.room_id}
+                </td>
                 <td className="px-4 py-2 border-y border-[#5C5C5C]">
-                  {discount > 0 
-                    ? <span className="text-red-500 line-through mr-2">{room.price}</span> 
-                    : null}
+                  {room.type}
+                </td>
+                <td className="px-4 py-2 border-y border-[#5C5C5C]">
+                  {room.bed}
+                </td>
+                <td className="px-4 py-2 border-y border-[#5C5C5C]">
+                  {room.extra_bed}
+                </td>
+                <td className="px-4 py-2 border-y border-[#5C5C5C]">
+                  {room.description}
+                </td>
+                <td className="px-4 py-2 border-y border-[#5C5C5C]">
+                  {discount > 0 ? (
+                    <span className="text-red-500 line-through mr-2">
+                      {room.price}
+                    </span>
+                  ) : null}
                   {(room.price * (1 - discount / 100)).toFixed(2)}
                 </td>
                 <td className="px-4 py-2 border-y border-r border-[#5C5C5C] text-right">
                   <button
                     onClick={() => handleBookRoom(room)}
-                    className="text-center text-black rounded w-full bg-[#fcdf39]"
+                    className="text-center px-3 py-1 text-primary hover:text-white rounded-full w-full border-2 border-primary hover:bg-primaryDark"
                   >
                     Book
                   </button>
@@ -179,11 +220,27 @@ const RoomDashboard = () => {
       </div>
 
       {/* 📃 Pagination */}
-      <div className="mt-6 flex justify-center space-x-4">
-        <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className="px-4 py-2 bg-gray-500 text-white rounded">&lt;&lt;</button>
-        <span className="text-3xl font-thin text-gray-600">{currentPage}</span>
-        <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages} className="px-4 py-2 bg-gray-500 text-white rounded">&gt;&gt;</button>
+      <div className="w-full flex justify-end">
+        <div className="mt-6 flex justify-center items-center gap-4">
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded"
+          >
+            &lt;&lt;
+          </button>
+          <div className="text-2xl font-thin text-gray-600">{currentPage}</div>
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded"
+          >
+            &gt;&gt;
+          </button>
+        </div>
       </div>
+
+      <div className="border-t border-gray-300 my-7"></div>
 
       <RoomBooking />
     </div>

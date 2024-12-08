@@ -41,7 +41,7 @@ const Page: React.FC = () => {
             className="w-full h-4/5 object-cover absolute"
           />
 
-          <div className="relative container h-full w-full flex justify-center items-center mt-60 z-10">
+          <div className="relative container h-full w-full flex justify-center items-center bottom-0 z-10">
             <BookingBar />
           </div>
         </div>
