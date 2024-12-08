@@ -5,7 +5,7 @@ const {
   getAllRoomBookings,
   getRoomBookingById,
   deleteRoomBooking,
-  getRoomBookingsByCustomerId,
+  getBookingByBookId,
 } = require('../controllers/roomBookingController');
 
 // POST: Create new room booking
@@ -21,6 +21,6 @@ router.get('/get/:id', getRoomBookingById);
 router.delete('/get/:id', deleteRoomBooking);
 
 // GET: Get all bookings by customer ID
-router.get('/getinvoice/:id', getRoomBookingsByCustomerId);
+router.get('/getbook/:id', getBookingByBookId);
 
 module.exports = router;

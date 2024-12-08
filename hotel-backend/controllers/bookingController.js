@@ -104,3 +104,6 @@ exports.deleteBooking = async (req, res) => {
         res.status(500).json({ message: 'Error deleting booking', error: error.message });
     }
 };
+
+// Get a booking by bookId
+

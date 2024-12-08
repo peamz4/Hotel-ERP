@@ -1,6 +1,7 @@
 const RoomBooking = require("../models/roomBooking");
 const axios = require("axios");
 
+
 // POST: Create a new room booking
 const createRoomBooking = async (req, res) => {
   try {
@@ -167,10 +168,49 @@ const getRoomBookingsByCustomerId = async (req, res) => {
   }
 };
 
+const getBookingByBookId = async (req, res) => {
+  try {
+    const { bookId } = req.params; // รับค่า bookId จาก params
+    console.log("Book ID:", bookId);
+    const booking = await RoomBooking.findOne({ bookId }); // ค้นหา booking จาก bookId
+    console.log("Booking found:", booking);
+    if (!booking) {
+      return res.status(404).json({ message: 'Booking not found' });
+    }
+
+    res.status(200).json({ booking });
+
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching booking by bookId', error: error.message });
+  }
+};
+
+// const getRoomBookingById = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+
+//     const booking = await RoomBooking.findById(id);
+//     if (!booking) {
+//       return res.status(404).json({ message: "Booking not found" });
+//     }
+
+//     res.status(200).json({
+//       message: "Booking retrieved successfully",
+//       data: booking,
+//     });
+//   } catch (error) {
+//     console.error("Error fetching booking by ID:", error.message);
+//     res
+//       .status(500)
+//       .json({ message: "An error occurred", error: error.message });
+//   }
+
+
 module.exports = {
   createRoomBooking,
   getAllRoomBookings,
   getRoomBookingById,
   deleteRoomBooking,
 getRoomBookingsByCustomerId,
+getBookingByBookId,
 };
