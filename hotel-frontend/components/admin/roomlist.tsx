@@ -19,6 +19,8 @@ const RoomList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortField, setSortField] = useState("room_id");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [editRoom, setEditRoom] = useState<Room | null>(null);  // State for the room being edited
+  const [newRoomData, setNewRoomData] = useState<Room | null>(null);  // New room data for saving
 
   const roomsPerPage = 10;
 
@@ -68,6 +70,43 @@ const RoomList = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   const totalPages = Math.ceil(sortedRooms.length / roomsPerPage);
+
+  const handleEdit = (room: Room) => {
+    setEditRoom(room);
+    setNewRoomData(room);  // Pre-fill the form with current room data
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (newRoomData) {
+      setNewRoomData({
+        ...newRoomData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const saveChanges = async () => {
+    if (newRoomData) {
+      try {
+        // Save the updated room data (API call to update room)
+        await axios.put(`http://localhost:3001/api/v1/rooms/update/${newRoomData.room_id}`, newRoomData);
+        // Update local room list after saving
+        setAvailableRooms((prevRooms) =>
+          prevRooms.map((room) =>
+            room.room_id === newRoomData.room_id ? newRoomData : room
+          )
+        );
+        setEditRoom(null);
+      } catch (err) {
+        console.error(err);
+        setError("Error updating room");
+      }
+    }
+  };
+
+  const cancelEdit = () => {
+    setEditRoom(null);
+  };
 
   if (loading) {
     return <div className="p-6 text-center text-xl">Loading rooms...</div>;
@@ -163,7 +202,10 @@ const RoomList = () => {
                   {room.status}
                 </td>
                 <td className="px-4 py-2 border-y border-r border-[#5C5C5C] text-right">
-                  <button className="text-center text-black rounded w-full bg-[#fcdf39]">
+                  <button
+                    className="text-center text-black rounded w-full bg-[#fcdf39]"
+                    onClick={() => handleEdit(room)}
+                  >
                     Edit
                   </button>
                 </td>
@@ -191,6 +233,68 @@ const RoomList = () => {
           &gt;&gt;
         </button>
       </div>
+
+      {/* Edit Room Modal */}
+      {editRoom && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center text-black">
+          <div className="bg-white p-6 rounded-lg w-[400px]">
+            <h2 className="text-xl font-bold mb-4">Edit Room</h2>
+            <div>
+              <label className="block mb-2">Room ID</label>
+              <input
+                type="text"
+                className="w-full px-4 py-2 mb-4 border"
+                value={newRoomData?.room_id || ""}
+                readOnly
+              />
+            </div>
+            <div>
+              <label className="block mb-2">Room Type</label>
+              <input
+                type="text"
+                name="type"
+                className="w-full px-4 py-2 mb-4 border"
+                value={newRoomData?.type || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <label className="block mb-2">Description</label>
+              <input
+                type="text"
+                name="description"
+                className="w-full px-4 py-2 mb-4 border"
+                value={newRoomData?.description || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <label className="block mb-2">Price</label>
+              <input
+                type="number"
+                name="price"
+                className="w-full px-4 py-2 mb-4 border"
+                value={newRoomData?.price || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="flex justify-end space-x-4">
+              <button
+                className="px-4 py-2 bg-gray-300 rounded"
+                onClick={cancelEdit}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded"
+                onClick={saveChanges}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

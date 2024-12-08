@@ -17,7 +17,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 7117,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B5-016",
@@ -35,7 +35,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5990,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A2-014",
@@ -44,7 +44,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 2925,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-009",
@@ -53,7 +53,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3866,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-001",
@@ -62,7 +62,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3294,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A3-011",
@@ -71,7 +71,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 4766,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-018",
@@ -80,7 +80,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8748,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C2-005",
@@ -89,7 +89,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 9910,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A1-016",
@@ -98,7 +98,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8093,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C4-002",
@@ -107,7 +107,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8468,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B5-018",
@@ -125,7 +125,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3700,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C3-008",
@@ -134,7 +134,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8423,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C3-007",
@@ -152,7 +152,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 3190,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A1-011",
@@ -161,7 +161,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 3082,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B4-004",
@@ -170,7 +170,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 9957,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A1-001",
@@ -188,7 +188,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3145,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B5-013",
@@ -197,7 +197,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8685,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B1-019",
@@ -206,7 +206,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8353,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C4-017",
@@ -224,7 +224,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5184,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B1-016",
@@ -233,7 +233,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5222,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-007",
@@ -251,7 +251,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A compact studio room with all essentials.",
         "price": 2851,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A5-002",
@@ -287,7 +287,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8295,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B5-012",
@@ -296,7 +296,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5108,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A5-008",
@@ -305,7 +305,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 3238,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B5-012",
@@ -314,7 +314,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3582,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C2-020",
@@ -323,7 +323,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3058,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B1-005",
@@ -332,7 +332,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5378,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B1-015",
@@ -341,7 +341,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A luxurious suite with exclusive features.",
         "price": 6354,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-008",
@@ -359,7 +359,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 3162,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A2-010",
@@ -377,7 +377,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3430,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B1-002",
@@ -386,7 +386,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3313,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A1-011",
@@ -395,7 +395,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A luxurious suite with exclusive features.",
         "price": 7702,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A2-013",
@@ -404,7 +404,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A luxurious suite with exclusive features.",
         "price": 6391,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B2-011",
@@ -413,7 +413,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8417,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C2-020",
@@ -422,7 +422,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 6624,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-002",
@@ -431,7 +431,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A compact studio room with all essentials.",
         "price": 3172,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B1-018",
@@ -440,7 +440,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3807,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B1-014",
@@ -449,7 +449,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3272,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B5-002",
@@ -458,7 +458,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5781,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A3-006",
@@ -467,7 +467,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8241,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B3-016",
@@ -485,7 +485,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5590,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A4-012",
@@ -494,7 +494,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5585,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C5-018",
@@ -503,7 +503,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5157,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C1-015",
@@ -512,7 +512,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3681,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C1-007",
@@ -521,7 +521,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5971,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C5-008",
@@ -530,7 +530,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A luxurious suite with exclusive features.",
         "price": 7574,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A4-016",
@@ -539,7 +539,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 9944,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-017",
@@ -566,7 +566,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 4113,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A3-001",
@@ -593,7 +593,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 7297,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B2-017",
@@ -602,7 +602,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3946,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A1-008",
@@ -611,7 +611,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 2764,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C1-006",
@@ -620,7 +620,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 8241,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C5-008",
@@ -629,7 +629,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3319,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C4-019",
@@ -638,7 +638,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A compact studio room with all essentials.",
         "price": 2515,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B1-006",
@@ -647,7 +647,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 2616,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B1-013",
@@ -656,7 +656,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5053,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-013",
@@ -665,7 +665,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 9641,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B5-004",
@@ -674,7 +674,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 6836,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-009",
@@ -683,7 +683,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 7404,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A5-016",
@@ -692,7 +692,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 9956,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B1-012",
@@ -701,7 +701,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5068,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B4-004",
@@ -719,7 +719,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 3469,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B4-015",
@@ -728,7 +728,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A compact studio room with all essentials.",
         "price": 2833,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "B5-016",
@@ -737,7 +737,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A luxurious suite with exclusive features.",
         "price": 8819,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C3-002",
@@ -764,7 +764,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A spacious deluxe room with premium amenities.",
         "price": 5259,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C2-007",
@@ -782,7 +782,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "Perfect connecting rooms for families or groups.",
         "price": 7176,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "A1-007",
@@ -809,7 +809,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 8537,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A4-019",
@@ -818,7 +818,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 7851,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B2-011",
@@ -827,7 +827,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 6623,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "B4-008",
@@ -836,7 +836,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3492,
-        "status": "occupied"
+        "status": "available"
     },
     {
         "room_id": "C3-017",
@@ -854,7 +854,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A compact studio room with all essentials.",
         "price": 3080,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "A5-008",
@@ -863,7 +863,7 @@ const rooms = [
         "extra_bed": "yes",
         "description": "A cozy standard room, ideal for travelers.",
         "price": 3038,
-        "status": "renovating"
+        "status": "available"
     },
     {
         "room_id": "C2-006",
@@ -881,7 +881,7 @@ const rooms = [
         "extra_bed": "no",
         "description": "A luxurious suite with exclusive features.",
         "price": 8260,
-        "status": "occupied"
+        "status": "available"
     }
 ]
 

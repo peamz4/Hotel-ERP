@@ -42,6 +42,8 @@ const InvoicingAndReceipt: React.FC = () => {
     customerId: "",
     email: "",
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage] = useState(10);
 
   useEffect(() => {
     // Fetch data from the API
@@ -76,7 +78,6 @@ const InvoicingAndReceipt: React.FC = () => {
 
   // Handle row click to select customer and display their invoice details
   const handleRowClick = (room: Booking) => {
-    // Mock invoice data for selected customer
     const selectedInvoiceData: InvoiceData = {
       id: `INV-${room.room.room_id}`,
       customerName: `${room.firstName} ${room.lastName}`,
@@ -84,7 +85,7 @@ const InvoicingAndReceipt: React.FC = () => {
       payeeAddress: "123 Hotel Street, City, Country",
       payeePhone: "+1 (555) 123-4567",
       subTotal: room.totalPrice,
-      discount: 50, // Example discount, you can modify this logic
+      discount: 50, // Assuming a fixed discount of $50
       total: room.totalPrice - 50, // Subtract discount from total
     };
 
@@ -92,7 +93,7 @@ const InvoicingAndReceipt: React.FC = () => {
     setCustomerDetails({
       firstName: room.firstName,
       lastName: room.lastName,
-      customerId: room.room.room_id, // Assuming room_id is the customer ID here
+      customerId: room.room.room_id,
       email: room.email,
     });
   };
@@ -110,30 +111,23 @@ const InvoicingAndReceipt: React.FC = () => {
   const saveAsPDF = () => {
     if (!invoiceData) return;
 
-    // Get the content to be printed as PDF
     const content = document.getElementById("invoice-section");
-
     if (content) {
-      // Save the original className
       const originalClassName = content.className;
-
-      // Change the className to your desired values before saving as PDF
       content.className = "bg-white text-black";
 
       const options = {
         margin: 10,
-        filename: `${invoiceData.id}.pdf`, // Use invoice ID as filename
-        html2canvas: { scale: 1, useCORS: true }, // Reduce scale for fitting content in one page
+        filename: `${invoiceData.id}.pdf`,
+        html2canvas: { scale: 1, useCORS: true },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
       };
 
-      // Generate PDF using html2pdf
       html2pdf()
         .from(content)
         .set(options)
         .save()
         .finally(() => {
-          // Revert the className back to its original value
           content.className = originalClassName;
         });
     }
@@ -149,17 +143,50 @@ const InvoicingAndReceipt: React.FC = () => {
     setFilteredData(filtered);
   };
 
+  // Handle refresh button click
   const handleRefreshClick = () => {
     setSearchTerm(""); // Clear the search term
     setFilteredData(data); // Reset to show all data
   };
 
+  // Handle sorting by time (check-in date)
+  const handleSortByTime = () => {
+    const sortedData = [...filteredData].sort((a, b) =>
+      new Date(a.checkInDate).getTime() > new Date(b.checkInDate).getTime() ? 1 : -1
+    );
+    setFilteredData(sortedData);
+  };
+
+  // Ensure the current page always has 10 rows, even if there are fewer on the last page
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = [...filteredData.slice(indexOfFirstRow, indexOfLastRow)];
+
+  // Pad with empty rows if there are fewer than 10 rows on the last page
+  while (currentRows.length < rowsPerPage) {
+    currentRows.push({
+      room: {
+        room_id: "",
+        type: "",
+      },
+      email: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      checkInDate: "",
+      totalPrice: 0,
+    });
+  }
+
+  // Handle page change
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="p-6 flex flex-col gap-5">
       <div className="w-full flex justify-between items-center mb-5">
-        <h1 className="text-3xl font-extrabold text-[#5C5C5C]">
-          Invoicing & Receipt
-        </h1>
+        <h1 className="text-3xl font-extrabold text-[#5C5C5C]">Invoicing & Receipt</h1>
         <form className="">
           <div className="flex gap-2 w-[500px]">
             <input
@@ -187,40 +214,42 @@ const InvoicingAndReceipt: React.FC = () => {
         </form>
       </div>
 
-      {/* Table and other content */}
+      {/* Table with sorting and pagination */}
       <div className="overflow-auto">
         <table className="w-full text-left border-collapse rounded">
           <thead>
             <tr className="bg-[#D9D9D9] border-[#5C5C5C] border text-[#5C5C5C]">
-              <th className="px-4 py-2 ">Room NO.</th>
-              <th className="px-4 py-2 ">Booker</th>
-              <th className="px-4 py-2 ">Contact</th>
-              <th className="px-4 py-2 ">Room Type</th>
-              <th className="px-4 py-2 ">Check-In</th>
-              <th className="px-4 py-2 ">Status</th>
+              <th className="px-4 py-2" onClick={handleSortByTime}>
+                Room NO.
+              </th>
+              <th className="px-4 py-2">Booker</th>
+              <th className="px-4 py-2">Contact</th>
+              <th className="px-4 py-2">Room Type</th>
+              <th className="px-4 py-2">Check-In</th>
+              <th className="px-4 py-2">Status</th>
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((room, index) => (
+            {currentRows.map((room, index) => (
               <tr
                 key={index}
                 className="odd:bg-white even:bg-transparent text-[#5C5C5C] cursor-pointer hover:bg-gray-200"
                 onClick={() => handleRowClick(room)}
               >
                 <td className="px-4 py-2 border border-[#5C5C5C]">
-                  {room.room.room_id}
+                  {room.room.room_id || "-"}
                 </td>
                 <td className="px-4 py-2 border border-[#5C5C5C]">
-                  {room.firstName} {room.lastName}
+                  {room.firstName} {room.lastName || "-"}
                 </td>
                 <td className="px-4 py-2 border border-[#5C5C5C]">
-                  {room.phoneNumber}
+                  {room.phoneNumber || "-"}
                 </td>
                 <td className="px-4 py-2 border border-[#5C5C5C]">
-                  {room.room.type}
+                  {room.room.type || "-"}
                 </td>
                 <td className="px-4 py-2 border border-[#5C5C5C]">
-                  {new Date(room.checkInDate).toLocaleString()}
+                  {room.checkInDate ? new Date(room.checkInDate).toLocaleString() : "-"}
                 </td>
                 <td className="px-4 py-2 border border-[#5C5C5C]">Booked</td>
               </tr>
@@ -229,95 +258,50 @@ const InvoicingAndReceipt: React.FC = () => {
         </table>
       </div>
 
-      <div className="border-t border-gray-300 my-4"></div>
+      {/* Pagination Controls */}
+      <div className="flex justify-between items-center mt-4">
+        <div className="flex gap-2">
+          {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePageChange(index + 1)}
+              className={`px-3 py-1 rounded-lg ${currentPage === index + 1 ? "bg-primary text-white" : "bg-gray-200"}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      </div>
 
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-[#5C5C5C]">
-        {/* Invoice Section */}
+      {/* Invoice Section */}
+      <div className="mt-8">
         {invoiceData ? (
-          <div
-            id="invoice-section"
-            className="bg-gray-100 p-6 shadow-md rounded-md"
-          >
-            <h2 className="text-xl font-semibold">Invoice</h2>
-            <p>#{invoiceData.id}</p>
+          <div id="invoice-section" className="p-5 border rounded-lg bg-gray-50 text-black">
+            <h3 className="font-bold">Invoice</h3>
+            <p><strong>Invoice ID:</strong> {invoiceData.id}</p>
+            <p><strong>Customer Name:</strong> {invoiceData.customerName}</p>
+            <p><strong>Payee:</strong> {invoiceData.payeeName}</p>
+            <p><strong>Address:</strong> {invoiceData.payeeAddress}</p>
+            <p><strong>Phone:</strong> {invoiceData.payeePhone}</p>
             <div className="mt-4">
-              <h3 className="font-bold">Billed To:</h3>
-              <p>{invoiceData.customerName}</p>
+              <h3 className="font-bold">Amount</h3>
+              <p>Subtotal: ${invoiceData.subTotal}</p>
+              <p>Discount: -${invoiceData.discount}</p>
+              <p>Total: ${invoiceData.total}</p>
             </div>
-            <div className="mt-4">
-              <h3 className="font-bold">Pay To:</h3>
-              <p>{invoiceData.payeeName}</p>
-              <p>{invoiceData.payeeAddress}</p>
-              <p>{invoiceData.payeePhone}</p>
-            </div>
-            <div className="mt-4">
-              <p>Sub-Total: ${invoiceData.subTotal}</p>
-              <p>Discount: ${invoiceData.discount}</p>
-              <p className="font-bold">Total: ${invoiceData.total}</p>
-            </div>
+
           </div>
         ) : (
-          <div className="w-full h-[700px] border-2 border-gray-300 border-dashed rounded-md flex justify-center items-center">
-            <p>No invoice to display.</p>
-          </div>
+          <p>Select a booking to view the invoice.</p>
         )}
-
-        {/* Form Section */}
-        <div>
-          <h1 className="text-2xl font-extrabold text-[#5C5C5C] pb-5">Detail</h1>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div>
-              <label className="block mb-2">First Name</label>
-              <input
-                type="text"
-                value={customerDetails.firstName}
-                onChange={handleCustomerDetailsChange}
-                name="firstName"
-                className="border rounded-lg p-2 w-full"
-              />
-            </div>
-            <div>
-              <label className="block mb-2">Last Name</label>
-              <input
-                type="text"
-                value={customerDetails.lastName}
-                onChange={handleCustomerDetailsChange}
-                name="lastName"
-                className="border rounded-lg p-2 w-full"
-              />
-            </div>
-            <div>
-              <label className="block mb-2">Customer ID</label>
-              <input
-                type="text"
-                value={customerDetails.customerId}
-                onChange={handleCustomerDetailsChange}
-                name="customerId"
-                className="border rounded-lg p-2 w-full"
-                disabled
-              />
-            </div>
-            <div>
-              <label className="block mb-2">Email</label>
-              <input
-                type="email"
-                value={customerDetails.email}
-                onChange={handleCustomerDetailsChange}
-                name="email"
-                className="border rounded-lg p-2 w-full"
-              />
-            </div>
-          </div>
-
-          {/* Button to generate invoice PDF */}
-          <button
-            onClick={saveAsPDF}
-            className="mt-6 w-full bg-primary text-white p-3 rounded-lg hover:scale-[0.99] transition-all"
-          >
-            Save as PDF
-          </button>
-        </div>
+      </div>
+      <div className="mt-4">
+        <button
+          onClick={saveAsPDF}
+          className="bg-primary text-white px-5 py-2 rounded-lg hover:scale-[0.99] transition-all"
+        >
+          Save as PDF
+        </button>
       </div>
     </div>
   );

@@ -57,22 +57,22 @@ const RoomBooking = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    
+
     const bookingData = {
       customerId: generatedCustomerId,
       bookId: generatedBookId,
       ...formData,
       room: selectedRoom,
-      totalPrice: totalPrice
+      totalPrice: discountedTotalPrice
     };
-  
+
     try {
       const response = await fetch('http://localhost:3001/api/v1/book/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingData)
       });
-  
+      console.log(bookingData);
       const result = await response.json();
       if (response.ok) {
         alert('Booking created successfully! 🎉');
@@ -86,9 +86,10 @@ const RoomBooking = () => {
   };
 
   const extraBedPrice = 500;
-  const taxesFees = 500;
+  const taxesFees = 0;
 
   const totalPrice = (selectedRoom?.price || 0) + formData.extraBed * extraBedPrice + taxesFees;
+  const discountedTotalPrice = ((totalPrice - (totalPrice * (parseFloat(localStorage.getItem("discount") || "0") / 100))) * parseInt(localStorage.getItem("totalDays") || "1")).toFixed(2);
 
   return (
     <div className="bg-transparent rounded-lg ">
@@ -184,6 +185,7 @@ const RoomBooking = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 text-black rounded-md"
                     required
+                    min={new Date().toISOString().split("T")[0]}
                   />
                 </div>
 
@@ -199,7 +201,10 @@ const RoomBooking = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 text-black rounded-md"
                     required
+                    min={formData.checkInDate}
                   />
+                </div>
+                <div>
                 </div>
               </div>
             </div>
@@ -222,13 +227,39 @@ const RoomBooking = () => {
             </div>
 
             <div className="mt-6">
-              <p className="text-lg font-medium text-[#5C5C5C]">
-                Total (Include Taxes & Fees): {totalPrice} ฿
-              </p>
+
+              <h1 className="text-lg font-medium text-[#5C5C5C]">
+
+
+               Total : {((totalPrice - (totalPrice * (parseFloat(localStorage.getItem("discount") || "0") / 100))) * parseInt(localStorage.getItem("totalDays") || "1")).toFixed(2)} ฿
+                {localStorage.getItem("discount") && (
+                  <p className="text-lg font-medium text-[#5C5C5C]">
+                    Discount: {localStorage.getItem("discount")}%
+                  </p>
+                )}
+              </h1>
+              <h1 className="text-lg font-medium text-[#5C5C5C]">
+                Total Day : {formData.checkInDate && formData.checkOutDate
+                  ? (() => {
+                    const totalDays = Math.ceil(
+                      (new Date(formData.checkOutDate).getTime() -
+                        new Date(formData.checkInDate).getTime()) /
+                      (1000 * 60 * 60 * 24) + 1
+                    );
+                    localStorage.setItem("totalDays", totalDays.toString());
+                    return totalDays;
+                  })()
+                  : 0} Days
+
+              </h1>
             </div>
 
             <div className="mt-6">
               <button
+                onClick={() => {
+                  localStorage.setItem("discount", "0");
+
+                }}
                 type="submit"
                 className="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition"
               >
