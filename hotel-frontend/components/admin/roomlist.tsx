@@ -79,7 +79,7 @@ const RoomList = () => {
 
   return (
     <div className="p-6 bg-transparent rounded-lg">
-      <h1 className="text-2xl font-bold text-[#5C5C5C] text-[40px]">
+      <h1 className="text-3xl font-bold text-[#5C5C5C]">
         Room Management
       </h1>
 

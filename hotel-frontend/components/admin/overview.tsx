@@ -48,7 +48,7 @@ const Overview = () => {
     <div className="p-6 bg-transparent rounded-lg">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-[#5C5C5C] text-[40px]">Hotel Report</h1>
+        <h1 className="text-3xl font-bold text-[#5C5C5C]">Hotel Report</h1>
         <select className="mt-4 border w-[130px] bg-[#5C5C5C] border-gray-300 rounded px-4 py-2">
           <option value="monthly" className="text-black">Monthly</option>
           <option value="weekly" className="text-black">Weekly</option>

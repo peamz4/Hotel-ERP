@@ -73,8 +73,8 @@ const PromotionAndDiscount = () => {
   };
 
   return (
-    <div className="py-12 flex flex-col gap-5 px-20">
-      <h1 className="text-2xl font-extrabold text-[#5C5C5C]">Promotion & Discount</h1>
+    <div className="p-6 flex flex-col gap-5">
+      <h1 className="text-3xl font-extrabold text-[#5C5C5C]">Promotion & Discount</h1>
       {/* Promotions Table */}
       <div className="mt-10 overflow-x-auto text-black border-b-2 border-black pb-10">
         <table className="w-full table-auto text-left border-collapse border border-black">

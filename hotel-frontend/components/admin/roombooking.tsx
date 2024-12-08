@@ -91,7 +91,7 @@ const RoomBooking = () => {
   const totalPrice = (selectedRoom?.price || 0) + formData.extraBed * extraBedPrice + taxesFees;
 
   return (
-    <div className="p-6 bg-transparent rounded-lg ">
+    <div className="bg-transparent rounded-lg ">
       <h1 className="text-2xl font-bold text-[#5C5C5C]">Booking Room</h1>
 
       <div className="mt-6">
