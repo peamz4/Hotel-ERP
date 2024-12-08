@@ -7,7 +7,8 @@ import RoomDashboard from "@/components/admin/roomdashboard";
 import Booking from "@/components/admin/roombooking";
 import InvoicingReceipts from "@/components/admin/InvoicingReceipt";
 import PromotionsDiscounts from "@/components/admin/PromotionsDiscounts";
-import LoadingPage from "@/components/LoadingPage"; // Import the loading screen component
+import LoadingPage from "@/components/loadingpage"; // Import the loading screen component
+import RoomList from "@/components/admin/roomlist";
 
 export default function HotelReportPage() {
     const [activeComponent, setActiveComponent] = useState("overview");
@@ -36,9 +37,11 @@ export default function HotelReportPage() {
             case "overview":
                 return <Overview />;
             case "roomDashboard":
-                return <RoomDashboard />;
+                return <RoomDashboard/>;
             case "Booking":
                 return <Booking />;
+            case "roomManage":
+                return <RoomList />;
             case "invoicingReceipts":
                 return <InvoicingReceipts />;
             case "promotionsDiscounts":
@@ -50,7 +53,14 @@ export default function HotelReportPage() {
 
     // Show loading screen if loading state is true
     if (isLoading) {
-        return <LoadingPage />;
+        return (
+            <div className="flex bg-[#FFFDF6]">
+                <AdminSidebar setActiveComponent={setActiveComponent} />
+                <main className="flex-1 p-6">
+                    <LoadingPage />
+                </main>
+            </div>
+        );
     }
 
     return (

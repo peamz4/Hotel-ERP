@@ -28,17 +28,17 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`w-screen p-4 pl-12 pr-12 flex flex-row justify-between bg-[#5C5C5C] transition-all duration-300 ${
-      isScrolled ? "sticky top-0 bg-opacity-100 z-50 h-[60px]" : "relative h-[120px] bg-opacity-5"
+      className={` w-screen p-4 pl-12 pr-12 flex flex-row justify-between bg-[#5C5C5C] transition-all duration-300 ${
+      isScrolled ? "sticky top-0 bg-opacity-100 z-50 h-[80px]" : "relative h-[120px] bg-opacity-5"
       }`}
     >
-      <Image src="/logo/logo.png" alt="Logo" width={isScrolled ? 70 : 170} height={isScrolled ? 100 : 140} />
+      <Image src="/logo/logo.png" alt="Logo" className="h-auto w-auto" width={1000} height={1000} />
       <div className="flex justify-center items-center gap-5 text-[18px]">
-      <a href="/home">HOME</a>
-      <a href="/acommodation">ACOMMODATION</a>
-      <a href="/offers">OFFERS</a>
-      <a href="/facilities">FACILITIES</a>
-      <a href="/gallery">GALLERY</a>
+      <a href="/home" className="hover:scale-110 transition-all">HOME</a>
+      <a href="/acommodation" className="hover:scale-110 transition-all">ACOMMODATION</a>
+      <a href="/offers" className="hover:scale-110 transition-all">OFFERS</a>
+      <a href="/facilities" className="hover:scale-110 transition-all">FACILITIES</a>
+      <a href="/gallery" className="hover:scale-110 transition-all">GALLERY</a>
       </div>
     </nav>
   );

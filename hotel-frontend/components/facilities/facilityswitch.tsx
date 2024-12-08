@@ -24,8 +24,8 @@ const SpaSection = () => {
   };
 
   return (
-    <div className="flex md:flex-row flex-col items-center px-0 py-[100px] -mt-10">
-      <div className=" relative md:w-[600px] w-[500px] md:h-[419px] h-[300px]">
+    <div className="flex md:flex-row flex-col justify-between py-20">
+      <div className=" relative md:w-[80%] w-full">
         <img
           className="w-[595px] md:h-[419px] h-[300px] object-cover"
           alt={activeTab}
@@ -84,7 +84,7 @@ const SpaSection = () => {
           )}
         </button>
       </div>
-      <div className="bg-[#EBEBEB] -ml-1">
+      <div className="bg-[#EBEBEB] w-full">
         <p className="md:w-[600px] w-[500px] md:h-[419px] h-[300px] text-black text-xl p-10">
           <span className="text-black text-xl">
             {content[activeTab].title}

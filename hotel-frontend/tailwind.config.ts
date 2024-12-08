@@ -21,6 +21,9 @@ export default {
         secondaryLight: "#6d6d6d",
         secondaryDark: "#4f4f4f",
       },
+
+      
+      
       screens: {
         'sm': '640px',
   

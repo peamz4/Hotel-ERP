@@ -37,19 +37,19 @@ const MobileNavigationBar = () => {
   }, []);
 
   return (
-    <div className=" fixed ">
+    <div className="sticky  top-0">
       <nav
         className={`w-screen h-[140px] p-4 flex flex-row justify-center transition-all duration-300 ease-in-out ${
           isScrolled ? "bg-[#333333]" : "bg-[#5C5C5C]"
         }`}
-        style={{ height: isOpen ? "140px" : "70px" }}
+        style={{ height: isOpen ? "140px" : "80px" }}
       >
         <Image
           src="/logo/logo.png"
-          className=""
           alt="Logo"
-          width={isOpen ? 200 : 100}
-          height={isOpen ? 120 : 60}
+          className="h-auto w-auto"
+          width={1000}
+          height={1000}
         />
 
         <div

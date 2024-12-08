@@ -30,14 +30,14 @@ const HotelOffer = () => {
                         </p>
                         <div className="flex items-center justify-between mt-5">
                             <p className="text-black text-right text-sm sm:text-base">
-                                from <span className="text-xl">6,000 THB</span>
+                                get <span className="text-xl">20% Discount</span>
                             </p>
                         </div>
                         <button
                             className="mr-20 ml-20 mt-10 px-5 py-3 bg-[#b4a258] text-white text-lg rounded"
                             onClick={handleSelectClick}
                         >
-                            Select
+                            get offer!
                         </button>
                     </div>
                 </div>
@@ -45,98 +45,54 @@ const HotelOffer = () => {
 
             {/* Pop-up Modal */}
             {isPopupVisible && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex max-md:items-center max-md:justify-center z-50">
+                <div className="fixed flex justify-center inset-0 bg-black bg-opacity-80 items-center max-md:items-center max-md:justify-center z-50">
                     <div className="bg-[#EBEBEB] shadow-lg w-[500px] h-[750px] relative">
-                        {/* Header */}
-                        <div className="bg-[#b4a258] flex justify-center items-center h-20">
-                            <button
-                                className="text-white text-4xl text-center"
-                                onClick={handleClosePopup}
-                            >
-                                &times;
-                            </button>
-                        </div>
-                        <div className="bg-white pt-5 flex">
-                            <h3 className="text-black text-base flex justify-center  font-medium mb-3">
-                                Advance Purchase Special
-                            </h3>
-                            <button
-                                className="text-black text-4xl flex justify-end text-center pl-5"
-                                onClick={handleClosePopup}
-                            >
-                                &times;
-                            </button>
-                        </div>
-                        {/* Content */}
-                        <div className="flex flex-col justify-center px-20">
 
-                            {/* Date Selection */}
-                            <div className="flex justify-center my-10">
-                                <div className="flex flex-col justify-center bg-white text-center">
-                                    <p className="text-sm bg-[#EBEBEB] px-5">Check in</p>
-                                    <p className="text-6xl">01</p>
-                                    <p className="text-sm">DEC 2024</p>
-                                    <p className="text-sm ">Sunday</p>
-                                </div>
-                                <div className="h-full w-[2px] mx-5 border-black" />
-                                <div className="flex flex-col justify-center bg-white text-center">
-                                    <p className="text-sm bg-[#EBEBEB] px-5">Check out</p>
-                                    <p className="text-6xl">01</p>
-                                    <p className="text-sm">DEC 2024</p>
-                                    <p className="text-sm">Sunday</p>
-                                </div>
+                        <div className="flex justify-center flex-col p-2">
+                            <div className="justify-center flex pt-8">
+                                <h1 className="text-4xl text-yellow-600 font-bold">GET THE OFFER</h1>
+
                             </div>
-
-                            {/* Guest Selection */}
-                            <div className="mb-5">
-                                <div className="flex justify-between items-center mb-2">
-                                    <p>Adults</p>
-                                    <div className="flex items-center">
-                                        <button className="border-2 border-black rounded-full h-6 w-6">+</button>
-                                        <p className="mx-2">1</p>
-                                        <button className="border-2 border-black rounded-full h-6 w-6">-</button>
-                                    </div>
-                                </div>
-                                <div className="flex justify-between items-center mb-2">
-                                    <p>Children (4–11 yrs)</p>
-                                    <div className="flex items-center">
-                                        <button className="border-2 border-black rounded-full h-6 w-6">+</button>
-                                        <p className="mx-2">1</p>
-                                        <button className="border-2 border-black rounded-full h-6 w-6">-</button>
-                                    </div>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    <p>Infant (0–3 yrs)</p>
-                                    <div className="flex items-center">
-                                        <button className="border-2 border-black rounded-full h-6 w-6">+</button>
-                                        <p className="mx-2">1</p>
-                                        <button className="border-2 border-black rounded-full h-6 w-6">-</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Promotion Code */}
-                            <div className="mb-5">
-                                <label htmlFor="promo-code" className="block text-gray-600 text-sm">
-                                    Promotion code
-                                </label>
-                                <input
-                                    type="text"
-                                    id="promo-code"
-                                    placeholder="Type your code here"
-                                    className="w-full p-2 border rounded"
+                            <div className="m-2">
+                                <img
+                                    className="w-full h-[261px] object-cover rounded-xl"
+                                    alt="Stay Longer Special"
+                                    src="/logo/staylonger.png"
                                 />
                             </div>
-
-                            {/* Book Now Button */}
-                            <div className="flex justify-center">
-                                <button className="flex justify-center w-[100px] py-3 bg-[#b4a258] text-white rounded">
-                                    Book now
-                                </button>
+                            <div className="p-4">
+                                <p className="text-black text-sm sm:text-base font-normal">
+                                    Stay Longer Special
+                                </p>
+                                <p className="text-black text-sm sm:text-base h-20 font-normal mt-5">
+                                    The longer you stay, the more you save. Extend your journey and luxuriate in savings of up 20%.
+                                </p>
                             </div>
+                            <div className="flex justify-center bg-white rounded-xl w-auto mx-20 p-2">
+                            <h1 className="text-4xl text-black font-bold">LONGER888</h1>
+                            </div>
+                            <button
+                                className="absolute top-2 right-2 text-black text-4xl"
+                                onClick={handleClosePopup}
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div className="flex justify-center">
+                            <button 
+                                className="flex justify-center w-[100px] py-3 bg-[#b4a258] text-white rounded mt-4"
+                                onClick={() => {
+                                    navigator.clipboard.writeText("LONGER888");
+                                    alert("Promotion code copied to clipboard!");
+                                }}
+                            >
+                                Get Code!
+                            </button>
                         </div>
                     </div>
                 </div>
+
             )}
         </div>
     );
