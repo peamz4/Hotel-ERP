@@ -26,13 +26,13 @@ const Page: React.FC = () => {
     };
   }, []);
   return (
-    <main className="bg-white">
+    <main className="bg-white w-full">
       <div className="fixed z-50">
         <Header />
       </div>
 
       <div className="w-full h-[800px] bg-cover flex">
-        <div className=" top-0 left-0 w-full h-auto mb-28 z-0">
+        <div className="top-0 left-0 h-auto mb-28 z-0">
           <video
             src="vids/compressed.mp4"
             autoPlay
@@ -41,7 +41,7 @@ const Page: React.FC = () => {
             className="w-full h-4/5 object-cover absolute"
           />
 
-          <div className="relative container h-full w-full flex justify-center items-center bottom-0 z-10">
+          <div className="absolute w-full h-full flex justify-center items-center bottom-52 z-10">
             <BookingBar />
           </div>
         </div>

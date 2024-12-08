@@ -207,69 +207,12 @@ const Page: React.FC = () => {
                         from <span className="text-xl">6,663 THB</span>
                       </p>
                     </div>
-                    <a href="/Kasara_Club_Room" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
+                    <a href="acommodation/kasaraclubroom" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
                       Select
                     </a>
                   </div>
                 </div>
 
-                <div className="flex flex-col w-full shadow-lg">
-                  <img
-                    className="w-full h-[261px] object-cover"
-                    alt="Stay Longer Special"
-                    src="/img/Kasara Club Room.png"
-                  />
-                  <div className="flex flex-col p-10 bg-white">
-                    <p className="text-black text-sm sm:text-base font-normal">
-                      Kasara Club Room
-                    </p>
-                    <p className="text-sm py-3 text-black">
-                      42 sqm / 452 sqft <br></br>
-                      Maximum 2 adults or 1 adult + 1 children
-                    </p>
-                    <ul className="text-black list-disc pl-5">
-                      <li>Club floor with golf course view</li>
-                      <li>Privileges of Kasara Executive Lounge</li>
-                    </ul>
-                    <div className="flex items-center justify-between">
-                      <p className="text-black text-right text-sm sm:text-base py-7">
-                        from <span className="text-xl">6,663 THB</span>
-                      </p>
-                    </div>
-                    <a href="/Kasara_Club_Room" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
-                      Select
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex flex-col w-full shadow-lg">
-                  <img
-                    className="w-full h-[261px] object-cover"
-                    alt="Stay Longer Special"
-                    src="/img/Kasara Club Room.png"
-                  />
-                  <div className="flex flex-col p-10 bg-white">
-                    <p className="text-black text-sm sm:text-base font-normal">
-                      Kasara Club Room
-                    </p>
-                    <p className="text-sm py-3 text-black">
-                      42 sqm / 452 sqft <br></br>
-                      Maximum 2 adults or 1 adult + 1 children
-                    </p>
-                    <ul className="text-black list-disc pl-5">
-                      <li>Club floor with golf course view</li>
-                      <li>Privileges of Kasara Executive Lounge</li>
-                    </ul>
-                    <div className="flex items-center justify-between">
-                      <p className="text-black text-right text-sm sm:text-base py-7">
-                        from <span className="text-xl">6,663 THB</span>
-                      </p>
-                    </div>
-                    <a href="/Kasara_Club_Room" className="px-5 py-3 bg-[#b4a258] text-white text-lg rounded text-center">
-                      Select
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

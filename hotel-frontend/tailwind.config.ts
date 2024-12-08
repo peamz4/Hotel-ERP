@@ -23,6 +23,7 @@ export default {
       },
 
       
+      
       screens: {
         'sm': '640px',
   
