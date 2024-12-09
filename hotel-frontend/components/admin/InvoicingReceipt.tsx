@@ -22,7 +22,6 @@ interface InvoiceData {
   payeeAddress: string;
   payeePhone: string;
   subTotal: number;
-  discount: number;
   total: number;
 }
 
@@ -85,8 +84,7 @@ const InvoicingAndReceipt: React.FC = () => {
       payeeAddress: "123 Hotel Street, City, Country",
       payeePhone: "+1 (555) 123-4567",
       subTotal: room.totalPrice,
-      discount: 50, // Assuming a fixed discount of $50
-      total: room.totalPrice - 50, // Subtract discount from total
+      total: room.totalPrice
     };
 
     setInvoiceData(selectedInvoiceData);
@@ -226,7 +224,7 @@ const InvoicingAndReceipt: React.FC = () => {
               <th className="px-4 py-2">Contact</th>
               <th className="px-4 py-2">Room Type</th>
               <th className="px-4 py-2">Check-In</th>
-              <th className="px-4 py-2">Status</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -251,7 +249,6 @@ const InvoicingAndReceipt: React.FC = () => {
                 <td className="px-4 py-2 border border-[#5C5C5C]">
                   {room.checkInDate ? new Date(room.checkInDate).toLocaleString() : "-"}
                 </td>
-                <td className="px-4 py-2 border border-[#5C5C5C]">Booked</td>
               </tr>
             ))}
           </tbody>
@@ -286,7 +283,6 @@ const InvoicingAndReceipt: React.FC = () => {
             <div className="mt-4">
               <h3 className="font-bold">Amount</h3>
               <p>Subtotal: ${invoiceData.subTotal}</p>
-              <p>Discount: -${invoiceData.discount}</p>
               <p>Total: ${invoiceData.total}</p>
             </div>
 

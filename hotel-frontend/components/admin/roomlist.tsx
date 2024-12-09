@@ -97,6 +97,7 @@ const RoomList = () => {
           )
         );
         setEditRoom(null);
+        alert("Room updated successfully");
       } catch (err) {
         console.error(err);
         setError("Error updating room");
@@ -115,6 +116,29 @@ const RoomList = () => {
   if (error) {
     return <div className="p-6 text-center text-xl text-red-500">{error}</div>;
   }
+
+  // const handleDelete = async (room_id: string) => {
+  //   try {
+  //     await axios.delete(`http://localhost:3001/api/v1/rooms/delete/${room_id}`);
+  //     setAvailableRooms((prevRooms) =>
+  //       prevRooms.filter((room) => room.room_id !== room_id)
+  //     );
+  //   } catch (err) {
+  //     console.error("Error deleting room", err);
+  //   }
+  // };
+
+  const handleDelete = async (room_id: string) => {
+    try {
+      await axios.delete(`http://localhost:3001/api/v1/rooms/delete/${room_id}`);
+      setAvailableRooms((prevRooms) => prevRooms.filter((room) => room.room_id !== room_id));
+      setEditRoom(null);
+      alert("Room deleted successfully");
+    } catch (err) {
+      console.error(err);
+      setError("Error deleting room");
+    }
+  };
 
   return (
     <div className="p-6 bg-transparent rounded-lg">
@@ -280,19 +304,28 @@ const RoomList = () => {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="flex justify-end space-x-4">
+            <div className="flex flex-row justify-between px-2">
+              
               <button
-                className="px-4 py-2 bg-gray-300 rounded"
-                onClick={cancelEdit}
+                className="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded"
+                onClick={() => handleDelete(newRoomData?.room_id || "")}
               >
-                Cancel
+                Delete
               </button>
-              <button
-                className="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded"
-                onClick={saveChanges}
-              >
-                Save
-              </button>
+              <div className="flex justify-end space-x-4">
+                <button
+                  className="px-4 py-2 bg-gray-300 rounded"
+                  onClick={cancelEdit}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded"
+                  onClick={saveChanges}
+                >
+                  Save
+                </button>
+              </div>
             </div>
           </div>
         </div>
